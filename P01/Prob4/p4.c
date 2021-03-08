@@ -5,8 +5,8 @@
 
 int main(){
     FILE *f;
-    int extrair, largura, altura, bytespixel, pixel1[3],endereco, tamanhoarray=0, RBG[3],x,y;
-
+    int extrair, largura, altura, bytespixel, pixel1[3],endereco, tamanhoarray=0,x,y,i;
+    char RGB[3],aux;
 
     f=fopen("imagem.bmp","rb");
 
@@ -35,17 +35,20 @@ int main(){
     fseek(f,20,SEEK_CUR);
     fread(&tamanhoarray,4,1,f);
 
-    printf("Escolha o X e o Y do pixel que quer ler: ");
-    scanf(" %d %d",&x,&y);
-    fseek(f,endereco+(3*y),SEEK_SET);
-
-
-
-    extrair=0;
-    fread(&extrair,1,1,f);
-    printf("%d",extrair);
-
-
+    while (1==1){ 
+        printf("Insira as coordenadas do pixel a ler (x,y): ");
+        scanf(" %d %d",&x,&y);
+        if (x>=800 || y>=533 || x<0 || y<0) {printf("Coordenadas inválidas.\n"); continue;}
+        fseek(f,endereco+bytespixel*largura*(altura-1-y)+(bytespixel*x),SEEK_SET);
+        fread(RGB,1,bytespixel,f);
+        aux=RGB[2];
+        RGB[2]=RGB[0];
+        RGB[0]=aux;
+        for(i=0;i<3;i++){ 
+            printf("%d ", (int)RGB[i]);
+        }
+        printf("\n");
+    }
 
     
     
