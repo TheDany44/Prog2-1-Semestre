@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 vetor* vetor_novo()
 {
@@ -183,4 +184,44 @@ int vetor_ordena(vetor* vec)
 	}
 
 	return 0;
+}
+
+vetor * vetor_concatena (vetor *vec1, vetor *vec2){
+	int tamanho2,i;
+	tamanho2=vetor_tamanho(vec2);
+	if(vetor_tamanho(vec1)==-1||vetor_tamanho(vec2)==-1){return NULL;}
+
+	for (i=0;i<tamanho2;i++){
+		vetor_insere(vec1,vec2->elementos[i].str,-1);
+	}
+	return vec1;
+}
+
+
+int vetor_inverte (vetor *vec){
+	int i,tamanho=vetor_tamanho(vec);
+	char move[200];
+	if(tamanho==-1){return 1;}
+	for(i=1;i<tamanho;i++){
+		strcpy(move,vec->elementos[i].str);
+		vetor_remove(vec,i);
+		vetor_insere(vec,move,0);
+	}
+	return 0;
+}
+
+vetor* vetor_baralha (vetor *vec){
+	vetor* vbaralhado;
+	srand(time(0));
+	vbaralhado=vetor_novo();
+	if(vbaralhado==NULL){return NULL;}
+	int tamanhov=vetor_tamanho(vec), tamanhobaralhado=vetor_tamanho(vbaralhado),i,pos;
+	if(tamanhov==-1||tamanhobaralhado==-1){return NULL;}
+	vetor_insere(vbaralhado,vec->elementos[0].str,-1);
+	for(i=1;i<tamanhov;i++){
+		tamanhobaralhado=vetor_tamanho(vbaralhado);
+		pos=rand()%tamanhobaralhado;
+		vetor_insere(vbaralhado,vec->elementos[i].str,pos);
+	}
+	return vbaralhado;
 }

@@ -9,7 +9,7 @@ int main()
     char **v;
     char str[80];
     int i, pos;
-    v = malloc(NSTRINGS * sizeof(char*));
+    v = calloc(NSTRINGS * sizeof(char*),80*sizeof(char));
 
     while(1)
     {
@@ -26,7 +26,7 @@ int main()
 		{
             printf("Posicao para nova string (1 a %d): ", NSTRINGS);
             scanf("%d", &pos);
-            getchar(); /* elimina \n */
+            getchar();
 		}
 		while(pos < 0 || pos > NSTRINGS);
 
@@ -36,9 +36,11 @@ int main()
         printf("Nova String: ");
         fgets(str, 80, stdin);
         str[strlen(str) - 1] = '\0';
-
-        v[pos - 1] = realloc(v[pos - 1], strlen(str));
+        v[pos - 1] = realloc(v[pos - 1], strlen(str)+1);
 		strcpy(v[pos - 1], str);
+    }
+    for(i=0;i<NSTRINGS;i++){
+        free(v[i]);
     }
     free(v);
     v=NULL;
