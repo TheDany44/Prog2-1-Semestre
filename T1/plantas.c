@@ -80,7 +80,7 @@ int planta_insere(colecao *c, planta *p)
 			break;
 		}
 	}
-	if(exists==1){return 1;}
+	if(exists){return 1;}
 
 
 	int pos=-1;
@@ -101,14 +101,15 @@ int planta_insere(colecao *c, planta *p)
 		}
 	}
 	else{return -1;}
-	c->plantas=realloc(c->plantas,(tamanhoc+1)*sizeof(planta*));
 	c->tamanho++;
+	tamanhoc=c->tamanho;
+	c->plantas=realloc(c->plantas,(tamanhoc)*sizeof(planta*));
 	if (pos==-1){
-		c->plantas[tamanhoc]=p;
+		c->plantas[tamanhoc-1]=p;
 		return 0;
 	}
 	else{
-		for(i=tamanhoc;i>pos;i--){
+		for(i=tamanhoc-1;i>pos;i--){
 			c->plantas[i]=c->plantas[i-1];
 		}
 		c->plantas[pos]=p;
@@ -183,7 +184,6 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 		}
 		free(alcunhas);
 	}
-	free(p);
 	fclose(f);
 	free(ID);
 	free(nome);
@@ -209,6 +209,8 @@ planta *planta_remove(colecao *c, const char *nomep)
 		c->plantas[i]=c->plantas[i+1];
 	}
 	c->tamanho--;
+	
+	c->plantas=realloc(c->plantas,c->tamanho*sizeof(planta*));
 
 	return pr;
 }
@@ -281,16 +283,16 @@ int *colecao_pesquisa_nome(colecao *c, const char *nomep, int *tam)
 		}
 	}
 
-	if(exists==0){free(pos);return NULL;}
+	if(exists==0){return NULL;}
 	*tam=tamanhov;
 	return pos;
 }
 int colecao_reordena(colecao *c, const char *tipo_ordem)
 {
 	if(c==NULL){return -1;}
-	if(strcmp(c->tipo_ordem,tipo_ordem)==0 || c->tamanho==0){return 0;}
+	if(strcmp(c->tipo_ordem,tipo_ordem)==0 || c->tamanho==0 || c->tamanho==1){return 0;}
 
-	strcpy(c->tipo_ordem,tipo_ordem);
+	
 	int tamanhoc=c->tamanho,i,a;
 	planta *aux;
 	if(strcmp(tipo_ordem,"nome")==0){
@@ -303,6 +305,7 @@ int colecao_reordena(colecao *c, const char *tipo_ordem)
 				}
 			}
 		}
+		strcpy(c->tipo_ordem,tipo_ordem);
 		return 1;
 	}
 	else if(strcmp(tipo_ordem,"id")==0){
@@ -315,6 +318,7 @@ int colecao_reordena(colecao *c, const char *tipo_ordem)
 				}
 			}
 		}
+		strcpy(c->tipo_ordem,tipo_ordem);
 		return 1;
 	}
 	else{return -1;}
