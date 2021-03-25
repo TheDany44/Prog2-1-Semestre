@@ -64,24 +64,33 @@ int planta_insere(colecao *c, planta *p)
 		if(strcmp(c->plantas[i]->ID,p->ID)==0){ //checks if plant already exits in coletion
 			c->plantas[i]->n_sementes+=p->n_sementes; //add seed count
 			
-			int acolecao, aplanta,totalalc,travelc=c->plantas[i]->n_alcunhas;
-			for(acolecao=0;acolecao<travelc;acolecao++){	//for every alcunha in c->planta[i]->alcunhas goes trough every alcunha in planta->alcunhas
-				for(aplanta=0;aplanta<p->n_alcunhas;aplanta++){
-					if(strcmp(c->plantas[i]->alcunhas[acolecao],p->alcunhas[aplanta])!=0){ //checks if p-alcunha[aplanta] doesn't exists in c->plantas[i]->alcunhas[acolecao]
-						c->plantas[i]->n_alcunhas++;
-						totalalc=c->plantas[i]->n_alcunhas;
-						c->plantas[i]->alcunhas=realloc(c->plantas[i]->alcunhas,totalalc*sizeof(char*));
-						c->plantas[i]->alcunhas[totalalc-1]=malloc((strlen(p->alcunhas[aplanta])+1)*sizeof(char));
-						strcpy(c->plantas[i]->alcunhas[totalalc-1],p->alcunhas[aplanta]);
+			int acolecao, aplanta;
+			for(aplanta=0;aplanta<p->n_alcunhas;aplanta++){	//for every alcunha in c->planta[i]->alcunhas goes trough every alcunha in planta->alcunhas
+				exists=0;
+				for(acolecao=0;acolecao<c->plantas[i]->n_alcunhas;acolecao++){
+					if(strcmp(c->plantas[i]->alcunhas[acolecao],p->alcunhas[aplanta])==0){ //checks if p-alcunha[aplanta] doesn't exists in c->plantas[i]->alcunhas[acolecao]
+						exists=1;
+						break;
 					}
 				}
+				if(!exists){
+					if(c->plantas[i]->n_alcunhas==0){
+						c->plantas[i]->alcunhas=malloc(sizeof(char*));
+					}
+					else{
+						c->plantas[i]->alcunhas=realloc(c->plantas[i]->alcunhas,(c->plantas[i]->n_alcunhas+1)*sizeof(char*));
+					}
+					c->plantas[i]->alcunhas[c->plantas[i]->n_alcunhas]=malloc((strlen(p->alcunhas[aplanta])+1)*sizeof(char));
+					strcpy(c->plantas[i]->alcunhas[c->plantas[i]->n_alcunhas],p->alcunhas[aplanta]);
+					c->plantas[i]->n_alcunhas++;
+				}
+
 			}
 			exists=1;
 			break;
 		}
 	}
 	if(exists){return 1;}
-
 
 	int pos=-1;
 	if (strcmp(c->tipo_ordem,"id")==0){
@@ -115,7 +124,6 @@ int planta_insere(colecao *c, planta *p)
 		c->plantas[pos]=p;
 		return 0;
 	}
-
 	
 	return -1;
 }
@@ -133,17 +141,17 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 	colecao *c;
 	planta *p;
 	FILE *f;
-	char *linha,*token,*ID, *nome;
+	char linha[400],*token,ID[10], nome[MAX_NAME],*token_anterior;
 	int n_seeds,n_alcunhas,i,check;
-	linha=malloc(300*sizeof(char));
-	ID=malloc(10*sizeof(char));
-	nome=malloc(MAX_NAME*sizeof(char));
 	f=fopen(nome_ficheiro,"r");
 	c=colecao_nova(tipo_ordem);
 
-	if(linha==NULL || ID==NULL || nome==NULL || c==NULL ||f==NULL){return NULL;}
+	if(c==NULL ||f==NULL){return NULL;}
 	char **alcunhas;
-	while(fgets(linha,300,f)!=NULL){
+	while(fgets(linha,400,f)!=NULL){
+		token=strtok(linha,"\n");
+		memmove(linha,token,strlen(linha));
+
 		token=strtok(linha,",");
 		strcpy(ID,token);
 		
@@ -152,26 +160,25 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 		
 		token=strtok(NULL,",");
 		n_seeds=atoi(token);
-		
-		token=strtok(NULL,",");
+
 		alcunhas=NULL;
 		n_alcunhas=0;
-		if(token!=NULL){
+		
+		token=strtok(NULL,","); 
+		if(token!=NULL){	//it means alcunhas exists
 			alcunhas=malloc(sizeof(char*));
-			if(alcunhas==NULL){return NULL;}
 			alcunhas[0]=malloc((strlen(token)+1)*sizeof(char));
-			if(alcunhas[0]==NULL){return NULL;}
 			strcpy(alcunhas[0],token);
 			n_alcunhas++;
 			token=strtok(NULL,",");
-		}
-		while(token!=NULL){
-			alcunhas=realloc(alcunhas,(n_alcunhas+1)*sizeof(char*));
-			alcunhas[n_alcunhas]=malloc((strlen(token)+1)*sizeof(char));
-			if(alcunhas[n_alcunhas]==NULL){return NULL;}
-			strcpy(alcunhas[n_alcunhas],token);
-			n_alcunhas++;
-			token=strtok(NULL,",");
+			while(token!=NULL){
+				alcunhas=realloc(alcunhas,(n_alcunhas+1)*sizeof(char*));
+				alcunhas[n_alcunhas]=malloc((strlen(token)+1)*sizeof(char));
+				if(alcunhas[n_alcunhas]==NULL){return NULL;}
+				strcpy(alcunhas[n_alcunhas],token);
+				n_alcunhas++;
+				token=strtok(NULL,",");
+			}
 		}
 		p=planta_nova(ID,nome,alcunhas,n_alcunhas,n_seeds);
 		if(p==NULL){return NULL;}
@@ -185,9 +192,6 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 		free(alcunhas);
 	}
 	fclose(f);
-	free(ID);
-	free(nome);
-	free(linha);
 	return c;
 }
 planta *planta_remove(colecao *c, const char *nomep)

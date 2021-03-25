@@ -96,12 +96,9 @@ int planta_insere(colecao *c, planta *p)
 
         int k=0;
         //se tipo_ordem for "id":
-        char id[5]="id\0";  
-        char nome[5]="nome\0";  
-        c->tipo_ordem[strlen(c->tipo_ordem)]='\0';
-        printf("\ntipo order e: %s || id e nome sao:.. %s .. %s\n",c->tipo_ordem,id,nome);
+        //c->tipo_ordem[strlen(c->tipo_ordem)]='\0';
         //if(strcmp(c->tipo_ordem,id)==0){
-        if(*c->tipo_ordem==*id){
+        if(strcmp(c->tipo_ordem,"id")==0){
             printf("\nolasegundoif2222\n");
             //ver pela ordem do ID
             while(k<tam){
@@ -115,7 +112,7 @@ int planta_insere(colecao *c, planta *p)
         }
         //se tipo_order for "nome"
         //else if(strcmp(c->tipo_ordem,nome)==0){
-        else if(*c->tipo_ordem==*nome){
+        else if(strcmp(c->tipo_ordem,"nome")==0){
             //adicionar de acordo com ordem alfabetica de nome cientifico
             while(k<tam){
                 if(*c->plantas[k]->nome_cientifico > *p->nome_cientifico){
