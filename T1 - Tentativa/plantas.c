@@ -104,7 +104,7 @@ int pesquisa_alcunha(planta *p,char *alcunha){
 int planta_insere(colecao *c, planta *p)
 {
 	if(c==NULL || p==NULL){return -1;}
-	int tamanhoc=c->tamanho,i,indice_encontrado=-1;
+	int tamanhoc=c->tamanho,i,control=-1;
 	planta* planta_encontrada;
 	planta_encontrada=NULL;
 	
@@ -123,9 +123,9 @@ int planta_insere(colecao *c, planta *p)
 		planta_encontrada->n_sementes+=p->n_sementes; //add seed count
 
 		for(i=0;i<p->n_alcunhas;i++){
-			indice_encontrado=pesquisa_alcunha(planta_encontrada,p->alcunhas[i]);
+			control=pesquisa_alcunha(planta_encontrada,p->alcunhas[i]);
 
-			if(indice_encontrado>=0){
+			if(control==-1){
 				if(planta_encontrada->n_alcunhas==0){
 					planta_encontrada->alcunhas=malloc(sizeof(char*));
 					if(planta_encontrada->alcunhas==NULL){return -1;}
@@ -135,9 +135,9 @@ int planta_insere(colecao *c, planta *p)
 					if(planta_encontrada->alcunhas==NULL){return -1;}
 				}
 
-				planta_encontrada->alcunhas[planta_encontrada->n_alcunhas]=malloc((strlen(p->alcunhas[indice_encontrado])+1)*sizeof(char));
+				planta_encontrada->alcunhas[planta_encontrada->n_alcunhas]=malloc((strlen(p->alcunhas[i])+1)*sizeof(char));
 				if(planta_encontrada->alcunhas[planta_encontrada->n_alcunhas]==NULL){return -1;}
-				strcpy(planta_encontrada->alcunhas[planta_encontrada->n_alcunhas],p->alcunhas[indice_encontrado]);
+				strcpy(planta_encontrada->alcunhas[planta_encontrada->n_alcunhas],p->alcunhas[i]);
 				planta_encontrada->n_alcunhas++;
 			}
 		}
