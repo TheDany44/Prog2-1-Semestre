@@ -9,11 +9,12 @@
 
 
 planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
-{
+{	
+	if(ID==NULL || nome_cientifico==NULL || n_alcunhas<0){return NULL;}
 	planta *plant;
-	int i;
 	plant = malloc(sizeof(planta));
 	if(plant==NULL){return NULL;}
+	int i;
 
 	strcpy(plant->ID,ID);
 	strcpy(plant->nome_cientifico,nome_cientifico);
@@ -21,8 +22,10 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 	
 	if(alcunhas!=NULL){
 		plant->alcunhas=malloc(n_alcunhas*sizeof(char*));
+		if(plant->alcunhas==NULL){free(plant);return NULL;}
 		for(i=0;i<n_alcunhas;i++){
 			plant->alcunhas[i]=malloc((strlen(alcunhas[i])+1)*sizeof(char));
+			if(plant->alcunhas[i]==NULL){free(plant);int k;for(k=0;k<i;k++){free(plant->alcunhas[k]);} free(plant->alcunhas);return NULL;}
 			strcpy(plant->alcunhas[i],alcunhas[i]);
 		}
 	}else{plant->alcunhas=NULL;}
@@ -36,7 +39,8 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 }
 
 colecao *colecao_nova(const char *tipo_ordem)
-{
+{	
+	if(tipo_ordem==NULL){return NULL;}
 	colecao *c;
 	c=malloc(sizeof(colecao));
 	if(c==NULL){return NULL;}
@@ -99,14 +103,15 @@ int pesquisa_alcunha(planta *p,char *alcunha){
 
 int planta_insere(colecao *c, planta *p)
 {
-	int tamanhoc=c->tamanho,i,exists=0,indice_encontrado=-1;
 	if(c==NULL || p==NULL){return -1;}
+	int tamanhoc=c->tamanho,i,indice_encontrado=-1;
 	planta* planta_encontrada;
 	planta_encontrada=NULL;
 	
 	//caso de ser a primeira planta na coleção
 	if(tamanhoc==0){
 		c->plantas=malloc(sizeof(planta*));
+		if(c->plantas==NULL){return -1;}
 		c->plantas[0]=p;
 		c->tamanho++;
 		return 0;
@@ -123,12 +128,15 @@ int planta_insere(colecao *c, planta *p)
 			if(indice_encontrado>=0){
 				if(planta_encontrada->n_alcunhas==0){
 					planta_encontrada->alcunhas=malloc(sizeof(char*));
+					if(planta_encontrada->alcunhas==NULL){return -1;}
 				}
 				else{
 					planta_encontrada->alcunhas=realloc(planta_encontrada->alcunhas,(planta_encontrada->n_alcunhas+1)*sizeof(char*));
+					if(planta_encontrada->alcunhas==NULL){return -1;}
 				}
 
 				planta_encontrada->alcunhas[planta_encontrada->n_alcunhas]=malloc((strlen(p->alcunhas[indice_encontrado])+1)*sizeof(char));
+				if(planta_encontrada->alcunhas[planta_encontrada->n_alcunhas]==NULL){return -1;}
 				strcpy(planta_encontrada->alcunhas[planta_encontrada->n_alcunhas],p->alcunhas[indice_encontrado]);
 				planta_encontrada->n_alcunhas++;
 			}
@@ -158,6 +166,7 @@ int planta_insere(colecao *c, planta *p)
 	c->tamanho++;
 	tamanhoc=c->tamanho;
 	c->plantas=realloc(c->plantas,(tamanhoc)*sizeof(planta*));
+	if(c->plantas==NULL){return -1;}
 	if (pos==-1){
 		c->plantas[tamanhoc-1]=p;
 		return 0;
@@ -182,29 +191,35 @@ int colecao_tamanho(colecao *c)
 }
 
 colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
-{
+{	
 	colecao *c;
-	planta *p;
 	FILE *f;
-	char linha[400],*token,ID[10], nome[MAX_NAME],*token_anterior;
+	planta *p;
+	char linha[700],*token,ID[10], nome[MAX_NAME],*token_anterior;
 	int n_seeds,n_alcunhas,i,check;
 	f=fopen(nome_ficheiro,"r");
+	if(f==NULL){return NULL;}
 	c=colecao_nova(tipo_ordem);
+	if(c==NULL){return NULL;}
 
-	if(c==NULL ||f==NULL){return NULL;}
 	char **alcunhas;
-	while(fgets(linha,400,f)!=NULL){
-		token=strtok(linha,"\n");
-		memmove(linha,token,strlen(linha));
+	while(fgets(linha,700,f)!=NULL){
+		n_seeds=0;
 
+		linha[strlen(linha)-1]='\0';
+		
 		token=strtok(linha,",");
+		if(token==NULL){continue;}
 		strcpy(ID,token);
 		
 		token=strtok(NULL,",");
+		if(token==NULL){continue;}
 		strcpy(nome,token);
 		
 		token=strtok(NULL,",");
+		if(token==NULL){continue;}
 		n_seeds=atoi(token);
+		if(n_seeds==0){continue;}
 
 		alcunhas=NULL;
 		n_alcunhas=0;
@@ -226,7 +241,6 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 			}
 		}
 		p=planta_nova(ID,nome,alcunhas,n_alcunhas,n_seeds);
-		if(p==NULL){return NULL;}
 		check=planta_insere(c,p);
 		if(check==-1){return NULL;}
 		else if(check==1){planta_apaga(p);}

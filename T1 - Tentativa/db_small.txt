@@ -12,6 +12,8 @@ HYGRO,Hygrophila R. Br.,70,swampweed
 RUCI4,Ruellia ciliosa Pursh,170
 RUCIC,Ruellia ciliosa Pursh var. cinerascens Fernald,235
 RUHU6,Ruellia humilis sensu Smal,100,non Nutt.
+RUHU6,Ruellia humilis sensu Smal,100,non Nutt.,oblongleaf snakeherb
+RUHU6,Ruellia humilis sensu Smal,100,non Nutt.,wild petunia
 RUELL,Ruellia L.,205,wild petunia
 RUHU,Ruellia humilis Nutt.,165,fringeleaf wild petunia
 RUCIL,Ruellia ciliosa Pursh var. longiflora A. Gray,295
