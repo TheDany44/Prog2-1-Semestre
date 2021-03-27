@@ -324,6 +324,7 @@ void quickSortIter(planta **p, int left, int right, const char *tipo_ordem) {
 
 	int i, j, tamanho = right - left + 1;
 	planta *trocap;
+	
  	if(tamanho < 2) //com tamanho 0 ou 1 esta ordenado 
  		return;
 	
