@@ -382,6 +382,7 @@ void Quick_Sort_colecao(colecao *c,int left,int right){
 	int i, k;
 	planta *ptemp;
 	if(right-left+1<2){return;}
+	printf("%d\n",right);
 	if(strcmp(c->tipo_ordem,"id")==0){ 
 
 		if(right-left+1<20){
@@ -424,7 +425,6 @@ void Quick_Sort_colecao(colecao *c,int left,int right){
 		}
 	}
 	else if(strcmp(c->tipo_ordem,"nome")==0){ 
-
 		if(right-left+1<20){
 
 			for(i=left+1;i<right+1;i++){
@@ -474,6 +474,11 @@ int colecao_reordena(colecao *c, const char *tipo_ordem)
 	if(strcmp(c->tipo_ordem,tipo_ordem)==0 || c->tamanho==0 || c->tamanho==1){return 0;}
 
 	strcpy(c->tipo_ordem,tipo_ordem);
+	int i;
+	/*for(i=0;i<c->tamanho;i++){
+			printf("%s |||| %s\n",c->plantas[i]->ID,c->plantas[i]->nome_cientifico);
+		}*/
+	//printf("%s || %s",c->plantas[435]->ID, c->plantas[435]->nome_cientifico);
 	Quick_Sort_colecao(c,0,c->tamanho-1);
 	return 1;
 
