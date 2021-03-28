@@ -195,7 +195,7 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 	colecao *c;
 	FILE *f;
 	planta *p;
-	char linha[700],*token,ID[10], nome[MAX_NAME],*token_anterior;
+	char linha[700],*token,ID[10], nome[MAX_NAME];
 	int n_seeds,n_alcunhas,i,check;
 	f=fopen(nome_ficheiro,"r");
 	if(f==NULL){return NULL;}
@@ -287,7 +287,7 @@ int procurar_planta_nome(colecao *c,const char* nome){
 
 planta *planta_remove(colecao *c, const char *nomep)
 {
-	int tamanhoc=c->tamanho,i,exists=0,pos;
+	int tamanhoc=c->tamanho,i,pos;
 	planta *pr;
 	if(c==NULL){return NULL;}
 
@@ -473,7 +473,6 @@ int colecao_reordena(colecao *c, const char *tipo_ordem)
 	if(strcmp(c->tipo_ordem,tipo_ordem)==0 || c->tamanho==0 || c->tamanho==1){return 0;}
 
 	strcpy(c->tipo_ordem,tipo_ordem);
-	int i;
 	Quick_Sort_colecao(c,0,c->tamanho-1);
 	return 1;
 
