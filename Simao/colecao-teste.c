@@ -386,6 +386,7 @@ int main()
         printf("OK: verifica_colecao_importa passou\n\n");
     }
 
+
     error = verifica_planta_remove(c1);
     if (error)
     {
