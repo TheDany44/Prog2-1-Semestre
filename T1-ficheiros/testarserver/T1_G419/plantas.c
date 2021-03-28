@@ -97,7 +97,7 @@ int pesquisa_alcunha(planta *p,char *alcunha){
 int planta_insere(colecao *c, planta *p)
 {
 	if(c==NULL || p==NULL){return -1;}
-	int tamanhoc=c->tamanho,i,control=-1;
+	int tamanhoc=c->tamanho,i;
 	planta* planta_encontrada;
 	planta_encontrada=NULL;
 	
