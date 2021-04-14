@@ -1,0 +1,501 @@
+BERBE,Berberis L.,190,barberry
+DRCUC,Draba cuneifolia Nutt. ex Torr. & A. Gray var. cuneifolia,170,wedgeleaf draba
+CONRI,Conringia Heist. ex Fabr.,275,hare's ear mustard
+ALSE4,Alternanthera sessilis (L.) R. Br. ex DC.,205,sessile joyweed
+IMPA,Impatiens pallida Nutt.,155,pale touch-me-not
+ACSAO,Acer saccharum Marshall ssp. ozarkense A.E. Murray,265
+HEAN3,Helianthus annuus L.,235,common sunflower
+SAIS,Sagittaria isoetiformis J.G. Sm.,185,quillwort arrowhead
+CAAR24,Cardamine arenicola Britton,115
+CALA8,Cardamine laciniata (Muhl. ex Willd.) Alph. Wood,265
+XACA3,Xanthium campestre Greene,140
+ILMOB,Ilex montana Torr. & A. Gray ex A. Gray var. beadlei (Ashe) Fernald,200
+YEVI,Yeatesia viridiflora (Nees) Small,100,yellow bractspike
+ROPAF2,Rorippa palustris (L.) Besser ssp. fernaldiana (Butters & Abbe) Jonsell,230,Fernald's yellowcress
+DIGL4,Dicliptera glandulosa Scheele,185
+SONA3,Soliva nasturtiifolia auct. non (Juss.) DC.,135
+XAEC2,Xanthium echinellum Greene,135
+ACSAV,Acer saccharum Marshall var. viride (Schmidt) A.E. Murray,85
+ACCU3,Acnida cuspidata Bertero ex Spreng.,155
+RASAS2,Raphanus sativus L. var. sativus,165
+ACSAS4,Acer saccharum Marshall ssp. schneckii (Rehder) Desmarais,115
+DIBR2,Dicliptera brachiata (Pursh) Spreng.,145,branched foldwing
+CAANM,Cardamine angustata O.E. Schulz var. multifida (Muhl. ex Elliott) H.E. Ahles,155
+ACIN4,Achyranthes indica (L.) Mill.,165
+ALIN9,Allibertia intermedia Marion,150
+ACBA2,Acer barbatum Michx. p.p.,130
+AMTU,Amaranthus tuberculatus (Moq.) Sauer,60,roughfruit amaranth
+AMGR,Amaranthus graecizans auct. non L.,180
+ACPH,Achyranthes philoxeroides (Mart.) Standl.,150
+AMPA10,Amaranthus paniculatus L.,225
+XASPI,Xanthium spinosum L. var. inerme Bel,85
+RUST2,Ruellia strepens L.,195,limestone wild petunia
+AMBL,Amaranthus blitoides S. Watson,245,mat amaranth
+ACAS,Achyranthes aspera L.,120,devil's horsewhip
+ACNEV2,Acer negundo L. var. variegatum Jacques,95
+AMBL2,Amaranthus blitum L.,260,purple amaranth
+RUHU6,Ruellia humilis sensu Smal,100,non Nutt.
+GEEL,Gentiana elliottii Chapm.,160
+CABEV,Carpinus betulus L. var. virginiana Marshall,75
+ACALP,Acnida altissima (Riddell) Moq. ex Standl. var. prostrata (Uline & Bray) Fernald,60
+LEDI4,Lepidium didymum L.,170
+CODI6,Coronopus didymus (L.) Sm.,55,lesser swinecress
+ACSAL2,Acer saccharum Marshall var. leucoderme (Small) Rehder,285
+BEJU4,Berberis julianae C.K. Schneid.,160,wintergreen barberry
+ROISF3,Rorippa islandica (Oeder) Borbas ssp. fernaldiana (Butters & Abbe) Hulten,225
+CAMPS,Campsis Lour.,130,campsis
+RUSEL,Rudbeckia serotina Nutt. var. lanceolata (Bisch.) Fernald & B.G. Schub.,240
+ACSAF3,Acer saccharum Marshall var. floridanum (Chapm.) Small & A. Heller,250
+SALO11,Sagittaria longirostra (Micheli) J.G. Sm.,160
+CARA2,Campsis radicans (L.) Seem. ex Bureau,165,trumpet creeper
+CACO25,Cakile constricta Rodman,135,Gulf Coast searocket
+SALOA,Sagittaria longirostra (Micheli) J.G. Sm. var. australis J.G. Sm.,165
+ROPAC3,Rorippa palustris (L.) Besser var. cernua (Nutt.) R. Stuckey,165
+AMIN6,Amaranthus incurvatus Tim. ex Gren. & Godr.,80
+ACTA,Acnida tamariscina auct. non (Nutt.) Alph. Wood,265
+DICY2,Diphylleia cymosa Michx.,300,American umbrellaleaf
+BEBE2,Berberis bealei Fortune,55
+PHVI6,Phaethusa virginica (L.) Britton,170
+DRCUF,Draba cuneifolia Nutt. ex Torr. & A. Gray var. foliosa Mohlenbr. & Voigt,270
+YUFIS,Yucca filamentosa L. var. smalliana (Fernald) H.E. Ahles,125
+ACER,Acer L.,135,maple
+ALAC6,Alternanthera achyrantha (L.) R. Br. ex Sweet,100
+PHHE16,Phaethusa helianthoides (Michx.) Britton,285
+SACAC,Sagittaria calycina Engelm. var. calycina,265,hooded arrowhead
+DRABA,Draba L.,130,draba
+ACFLL,Acer floridanum (Chapm.) Pax var. longii Fernald,300
+SALA,Sagittaria lancifolia L.,75,bulltongue arrowhead
+XASA3,Xanthium saccharatum Wallr.,290
+SAENL3,Sagittaria engelmanniana J.G. Sm. ssp. longirostra (Micheli) Bogin,190
+SASUG2,Sagittaria subulata (L.) Buchenau var. gracillima (S. Watson) J.G. Sm.,160
+COSQ,Coronopus squamatus (Forssk.) Asch.,215,greater swinecress
+GNSP2,Gnaphalium spathulatum Lam.,245
+SAGRC2,Sagittaria graminea Michx. var. chapmanii J.G. Sm.,65,Chapman's arrowhead
+AMPU,Amaranthus pubescens (Uline & Bray) Rydb.,175
+RUNO,Ruellia noctiflora (Nees) A. Gray,220,nightflowering wild petunia
+YUFIC,Yucca filamentosa L. var. concava (Haw.) Baker,230
+SASUN,Sagittaria subulata (L.) Buchenau var. natans (Michx.) J.G. Sm.,290
+ACAL3,Acnida alabamensis Standl.,300
+RUCIC,Ruellia ciliosa Pursh var. cinerascens Fernald,235
+CORO5,Corylus rostrata Aiton,90
+LOCA12,Lophotocarpus calycinus (Engelm.) J.G. Sm.,165
+CADI21,Carara didyma (L.) Britton,230
+DIBRR,Dicliptera brachiata (Pursh) Spreng. var. ruthii Fernald,255
+SASU,Sagittaria subulata (L.) Buchenau,200,awl-leaf arrowhead
+XACO,Xanthium commune Britton,165
+AMAL,Amaranthus albus L.,280,prostrate pigweed
+BETUL,Betula L.,160,birch
+BESA6,Berberis sargentiana C.K. Snied.,280,Sargent's barberry
+ACCA11,Acnida cannabina L.,295
+ACSE4,Achyranthes sessilis (L.) Desf. ex Steud.,300
+CEIN6,Centrostachys indica (L.) Standl.,110
+CAMU18,Cardamine multifida (Muhl. ex Elliott) Alph. Wood,175
+ALINS,Alnus incana (L.) Moench var. serrulata (Aiton) B. Boivin,190
+BELE,Betula lenta L.,280,sweet birch
+ACRE5,Achyranthes repens L.,150
+IMBA,Impatiens balsamina L.,60,spotted snapweed
+SANI9,Saccharodendron nigrum (Michx. f.) Small,175
+DELAI,Dentaria laciniata Muhl. ex Willd. var. integra (O.E. Schulz) Fernald,255
+XACU,Xanthium curvescens Millsp. & Sherff,285
+SIMU6,Sisymbrium murale L.,245
+XASTW,Xanthium strumarium L. var. wootonii (Cockerell) M. Peck,115
+XAGL2,Xanthium glanduliferum Greene,80
+SAOR8,Sagittaria ornithorhyncha Small,215
+AMAL5,Amaranthus altissimus Riddell,170
+GNPUS,Gnaphalium purpureum L. var. spathulatum (Lam.) H.E. Ahles,145
+ACSP2,Acer spicatum Lam.,200,mountain maple
+VEIL3,Vernonia xillinoensis Gleason [gigantea x missurica],265,ironweed
+ACHEN,Actinomeris helianthoides (Michx.) Nutt. var. nuttallii DC.,160
+AMBLE2,Amaranthus blitum L. var. emarginatus (Salzm. ex Uline & W.L. Bray) Lambinon,180,purple amaranth
+HEANP,Helianthus angustifolius L. var. planifolius Fernald,90
+RORIP,Rorippa Scop.,120,yellowcress
+SALAM2,Sagittaria lancifolia L. ssp. media (Micheli) Bogin,60,bulltongue arrowhead, delta arrowhead
+BENI,Betula nigra L.,225,river birch
+AZCA,Azolla caroliniana Willd.,60,Carolina mosquitofern
+AMPA11,Amaranthus patulus Bertol.,250
+ACAL5,Acnida altissima (Riddell) Moq. ex Standl.,95
+BICA,Bignonia capreolata L.,280,crossvine
+MANFR,Manfreda Salisb.,220,tuberose
+DRCUH,Draba cuneifolia Nutt. ex Torr. & A. Gray var. helleri (Small) O.E. Schulz,100
+RUSEC,Rudbeckia serotina Nutt. var. corymbifera (Fernald) Fernald & B.G. Schub.,130
+VENO,Vernonia noveboracensis (L.) Michx.,185,New York ironweed
+CAMA,Cakile maritima Scop.,80,European searocket
+VEALT,Vernonia altissima Nutt. var. taeniotricha S.F. Blake,135
+GOHY,Gochnatia hypoleuca (DC.) A. Gray,70,shrubby bullseye
+LESQ2,Lepidium squamatum Forssk.,65
+SALAM3,Sagittaria lancifolia L. var. media Micheli,80
+ALRE2,Alternanthera repens (L.) Lin,195,non J.F. Gmel.
+RHVI4,Rhytiglossa viridiflora Nees,190
+ACSAL,Acer saccharum Marshall ssp. leucoderme (Small) Desmarais,220
+ANCA21,Anisostichus capreolata (L.) Bureau,295
+VEGL,Vernonia glauca (L.) Willd.,110,broadleaf ironweed
+NANDI,Nandina Thunb.,55,nandina
+ACNIL,Acer nigrum Michx. f. var. leucoderme (Small) Fosberg,85
+GYST,Gymnostyles stolonifera (Brot.) Tutin,135,carpet burrweed
+GAPU3,Gamochaeta purpurea (L.) Cabrera,220,spoonleaf purple everlasting
+ACSAF2,Acer saccharinum L. var. floridanum Chapm.,280
+XAOV,Xanthium oviforme Wallr.,275
+RUHUE,Ruellia humilis Nutt. var. expansa Fernald,165
+COAMI,Corylus americana Walter var. indehiscens Palmer & Steyerm.,140
+ACNI5,Acer nigrum Michx. f.,55,black maple
+ALGL11,Alternanthera glabra Moq.,295
+RUOB5,Ruellia oblongifolia Michx.,195
+ACNET,Acer negundo L. var. texanum Pax,80,boxelder
+DELA5,Dentaria laciniata Muhl. ex Willd.,210
+XACA6,Xanthium cavanillesii Schouw,245
+YOUNG,Youngia Cass.,125,youngia
+AMARA,Amaranthus L.,210,pigweed
+VENOT,Vernonia noveboracensis (L.) Michx. var. tomentosa (Elliott) Britton,245
+ACASA,Achyranthes aspera L. var. aspera,150,devil's horsewhip
+VEAB2,Vernonia aborigina Gleason,295
+GADR2,Gaillardia drummondii (Hook.) DC.,290
+PHOC4,Phaethusa occidentalis (L.) Britton,165
+ACALS,Acnida altissima (Riddell) Moq. ex Standl. var. subnuda (S. Watson) Fernald,110
+VEGIG,Vernonia gigantea (Walter) Trel. ssp. gigantea,90,giant ironweed
+ACHE3,Actinomeris helianthoides (Michx.) Nutt.,250
+ACNIP,Acer nigrum Michx. f. var. palmeri Sarg.,280
+PODOP,Podophyllum L.,100,mayapple
+GRLI3,Grindelia littoralis Steyerm.,200
+CARDA,Cardamine L.,70,bittercress
+GNPE2,Gnaphalium peregrinum Fernald,245
+ALNUS,Alnus Mill.,85,alder
+DIBR6,Diapedium brachiatum (Pursh) Kuntze,95
+LOCA11,Lophotocarpus californicus J.G. Sm.,130
+ACOP2,Actinomeris oppositifolia DC.,60
+RUPU2,Ruellia purshiana Fernald,165,Pursh's wild petunia
+CAED,Cakile edentula (Bigelow) Hook.,180,American searocket
+ACBA2,Acer barbatum Michx. p.p.,290
+VEMI2,Vernonia missurica Raf.,260,Missouri ironweed
+GAPU,Gaillardia pulchella Foug.,290,Indian blanket
+AGTI,Agave tigrina (Engelm.) Cory,60
+AMDE,Amaranthus deflexus L.,175,largefruit amaranth
+JULA2,Justicia laetevirens Buckley,290
+PTHE2,Pterophyton helianthoides (Michx.) Alexander,80
+VERBE2,Verbesina L.,75,crownbeard
+ACBAV,Acer barbatum Michx. var. villipes (Rehder) Ashe,75
+VEHA4,Vernonia harperi Gleason,85
+DEIN14,Dentaria incisa Small,285
+JEDI,Jeffersonia diphylla (L.) Pers.,175,twinleaf
+POVI18,Polianthes virginica (L.) Shinners,295
+CABI8,Catalpa bignonioides Walter,80,southern catalpa
+PICH4,Pistacia chinensis Bunge,75,Chinese pistache, pistache
+DECO8,Dentaria concatenata Michx.,240
+ACPA4,Achyranthes paronychioides auct. non (L.) Lam.,145
+XASTC,Xanthium strumarium L. var. canadense (Mill.) Torr. & A. Gray,130,Canada cocklebur
+NENE,Negundo negundo (L.) Karst,290,nom. inval.
+MABE2,Mahonia bealei (Fortune) Carriere,90,Beale's barberry
+ROISG2,Rorippa islandica (Oeder) Borbas var. glabrata (Lunell) Butters & Abbe,245
+XACAR,Xanthium californicum Greene var. rotundifolium Widder,290
+XASTP,Xanthium strumarium L. var. pensylvanicum (Wallr.) M. Peck,280
+IMBI2,Impatiens biflora Walter,180
+VEVI3,Verbesina virginica L.,210,white crownbeard
+GACI4,Galinsoga ciliata (Raf.) S.F. Blake,215
+AMHY,Amaranthus hybridus L.,280,slim amaranth
+MAVI5,Manfreda virginica (L.) Salisb. ex Rose,220,false aloe
+COOR,Conringia orientalis (L.) Dumort.,130,hare's ear mustard
+VEFL,Vernonia flaccidifolia Small,220,Tennessee ironweed
+DITE4,Diplotaxis tenuifolia (L.) DC.,240,perennial wallrocket
+CAFL14,Cardamine flexuosa With.,235,woodland bittercress
+WEDEL,Wedelia Jacq.,235,creepingoxeye
+MATI,Manfreda tigrina (Engelm.) Small,155
+RUPE4,Ruellia pedunculata Torr. ex A. Gray,130,stalked wild petunia
+GANE3,Gaillardia neomexicana A. Nelson,240
+RUSES,Rudbeckia serotina Nutt. var. sericea (T.V. Moore) Fernald & B.G. Schub.,105
+GLEBI,Glebionis Cass.,195,glebionis
+RUSTC,Ruellia strepens L. var. cleistantha A. Gray,155
+SACY5,Sagittaria cycloptera (J.G. Sm.) C. Mohr,220
+YUFL2,Yucca flaccida Haw.,135,weak-leaf yucca
+CAULO,Caulophyllum Michx.,170,cohosh
+CACAV,Carpinus caroliniana Walter ssp. virginiana (Marshall) Furlow,135,American hornbeam
+AMRES,Amaranthus retroflexus L. var. salicifolius I.M. Johnst.,170
+VEAL7,Vernonia altissima Nutt.,65
+XACA4,Xanthium canadense Mill.,170
+YOJAE,Youngia japonica (L.) DC. ssp. elstonii (Hochr.) Babc. & Stebbins,115
+RULA3,Rudbeckia laciniata L.,55,cutleaf coneflower
+VEOC,Verbesina occidentalis (L.) Walter,235,yellow crownbeard
+ACCA37,Achyranthes canescens R. Br.,80
+CACAC2,Carpinus caroliniana Walter ssp. caroliniana,195,American hornbeam
+ACRU,Acer rubrum L.,280,red maple
+GNPU2,Gnaphalium purpureum L.,280
+ACFLV,Acer floridanum (Chapm.) Pax var. villipes Rehder,270
+AMGRP,Amaranthus graecizans L. var. pubescens Uline & Bray,190
+SAOB4,Sagittaria obtusa Muhl. ex Willd,180,non Thunb.
+ROISG,Rorippa islandica (Oeder) Borbas var. glabra (O.E. Schulz) S.L. Welsh & Reveal,185
+AMMU3,Amaranthus muricatus (Gillies ex Moq.) Gillies ex Hieron.,85,African amaranth
+OSVIL,Ostrya virginiana (Mill.) K. Koch var. lasia Fernald,135
+ACNE2,Acer negundo L.,80,boxelder
+GRIND,Grindelia Willd.,80,gumweed
+GABI4,Galinsoga bicolorata H. St. John & D. White,245
+CACA58,Catalpa catalpa (L.) Karst,245,nom. inval.
+YOJA,Youngia japonica (L.) DC.,285,Oriental false hawksbeard
+ACNIF,Acer nigrum Michx. f. var. floridanum (Chapm.) Fosberg,260
+GALA9,Gatesia laetevirens (Buckley) A. Gray,300
+YURE2,Yucca recurvifolia Salisb.,90,curve-leaf yucca
+GAPI4,Gaillardia picta D. Don,245
+AMBLE,Amaranthus blitum L. ssp. emarginatus (Moq. ex Uline & Bray) Carreter,250,Garmendia & Pedrol
+SAGRC5,Sagittaria graminea Michx. ssp. chapmanii (J.G. Sm.) Haynes & C.B. Hellquist,135
+SABR8,Sagittaria brevirostra Mack. & Bush,65,shortbeak arrowhead
+AMRE,Amaranthus retroflexus L.,245,redroot amaranth
+YOTH,Youngia thunbergiana DC.,300,tall false hawksbeard
+DYSCH,Dyschoriste Nees,75,snakeherb
+XAPE2,Xanthium pensylvanicum Wallr.,90
+XACH,Xanthium chasei Fernald,160
+RUPEP,Ruellia pedunculata Torr. ex A. Gray ssp. pinetorum (Fernald) R.W. Long,250,stalked wild petunia
+LODE3,Lophotocarpus depauperatus J.G. Sm.,70
+ACLE,Acer leucoderme Small,185,chalk maple
+ALPAP,Alternanthera paronychioides A. St.-Hil. var. paronychioides,75,smooth joyweed
+GYNA,Gymnostyles nasturtiifolia auct. non Juss.,220
+ACORU,Acorus L.,140,sweetflag
+TORAR,Toxicodendron radicans (L.) Kuntze ssp. radicans,190,eastern poison ivy, ivy, poison ivy
+SAPU10,Sagittaria pubescens Muhl. ex Nutt.,60
+ANCR7,Anisostichus crucigera (L.) Bureau,225
+GAAR7,Galinsoga aristulata E.P. Bicknell,250
+RUELL,Ruellia L.,205,wild petunia
+DEMU3,Dentaria multifida Muhl. ex Elliott,250
+SALO10,Sagittaria longirostra auct. non (Micheli) J.G. Sm.,140
+AMCA2,Amaranthus cannabinus (L.) Sauer,275,tidalmarsh amaranth, red amaranth
+SAAU2,Sagittaria australis (J.G. Sm.) Small,275,longbeak arrowhead
+SACH14,Sagittaria chapmanii (J.G. Sm.) C. Mohr,220
+BACID,Bacidia De Not.,80,dotted lichen
+RUSTM,Ruellia strepens L. var. micrantha (Engelm. & A. Gray) Britton,245
+SAPL,Sagittaria platyphylla (Engelm.) J.G. Sm.,160,delta arrowhead
+DIPHY2,Diphylleia Michx.,170,umbrellaleaf
+GRLA3,Grindelia lanceolata Nutt.,110,narrowleaf gumweed
+BEJU3,Berberis julianiae C.K. Schneid,170,orth. var.
+AGVI6,Agave virginica L.,270
+AMAU,Amaranthus australis (A. Gray) Sauer,235,southern amaranth
+NADO,Nandina domestica Thunb.,240,sacred bamboo
+XAIN,Xanthium inflexum Mack. & Bush,240
+XASTW2,Xanthium strumarium L. var. wootonii (Cockerell) W.C. Martin & C.R. Hutchins,280
+SAFI2,Sagittaria filiformis J.G. Sm.,140,threadleaf arrowhead
+ACHEE,Actinomeris helianthoides (Michx.) Nutt. var. elliottii DC.,280
+AMHYC2,Amaranthus hybridus L. var. cruentus (L.) Moq.,250
+CRJAE,Crepis japonica (L.) Benth. var. elstonii Hochr.,300
+XAAM2,Xanthium americanum Walter,245
+ALPO6,Alternanthera polygonoides auct. non (L.) R. Br. ex Sweet,200
+CAPE3,Cardamine pensylvanica Muhl. ex Willd.,85,Pennsylvania bittercress
+OSVI,Ostrya virginiana (Mill.) K. Koch,260,hophornbeam
+SACA21,Sagittaria calycina Engelm.,295,hooded arrowhead
+XIMI,Ximenesia microptera DC.,105
+RUHUL,Ruellia humilis Nutt. var. longiflora (A. Gray) Fernald,300
+ACAU4,Acnida australis A. Gray,85
+GLCO6,Glebionis coronarium (L.) Tzvelev,185,crowndaisy
+DYOB,Dyschoriste oblongifolia (Michx.) Kuntze,175,oblongleaf snakeherb
+SABA13,Saccharodendron barbatum (Michx.) Nieuwl.,130
+CHSP9,Chrysanthemum spatiosum (L.H. Bailey) L.H. Bailey,235
+CADE14,Cardamine debilis D. Don,285,roadside bittercress
+IMCA,Impatiens capensis Meerb.,230,jewelweed
+HEAMA,Helenium amarum (Raf.) H. Rock var. amarum,55,sneezeweed
+ACSAN,Acer saccharum Marshall ssp. nigrum (Michx. f.) Desmarais,270
+SAMO9,Sagittaria mohrii J.G. Sm.,90
+WEFR,Wedelia fruticosa Jacq.,155,coastal plain creepingoxeye
+ACCA4,Acorus calamus L.,55,calamus
+AMSP,Amaranthus spinosus L.,245,spiny amaranth
+ALPE6,Alternanthera peploides (Humb. & Bonpl. ex Schult.) Urb.,250
+ALNO,Alnus noveboracensis Britton,240
+GAVI4,Gaillardia villosa Rydb.,155
+RUPI2,Ruellia pinetorum Fernald,205
+XACY,Xanthium cylindraceum Millsp. & Sherff,240
+XACH2,Xanthium chinense Mill.,285
+ROPAD2,Rorippa palustris (L.) Besser var. dictyota (Greene) R. Stuckey,245
+SAENB2,Sagittaria engelmanniana J.G. Sm. ssp. brevirostra (Mack. & Bush) Bogin,300
+GAPUP,Gaillardia pulchella Foug. var. picta (D. Don) A. Gray,155,Indian blanket
+BECA2,Berberis canadensis Mill.,75,American barberry
+SALA2,Sagittaria latifolia Willd.,255,broadleaf arrowhead
+OSTRY,Ostrya Scop.,225,hophornbeam
+AMHYC,Amaranthus hybridus L. ssp. cruentus (L.) Thell.,60
+SACH15,Sagittaria chinensis Pursh,180
+AGLA8,Agave lata Shinners,150
+ACSU,Acnida subnuda (S. Watson) Standl.,195
+SAGR,Sagittaria graminea Michx.,200,grassy arrowhead
+CORON3,Coronopus Zinn,285,swinecress
+CRJA4,Crepis japonica (L.) Benth.,190
+XAEC,Xanthium echinatum Murray,235
+CACO26,Cardamine concatenata (Michx.) Sw.,130,cutleaf toothwort
+XANTH2,Xanthium L.,215,cocklebur
+XACA2,Xanthium californicum Greene,300
+XAGL3,Xanthium globosum Shull,155
+RUHU,Ruellia humilis Nutt.,165,fringeleaf wild petunia
+CACO57,Carara coronopus (L.) Medik.,255
+CAAM21,Carpinus americana Michx.,275
+YELA,Yeatesia laetevirens (Buckley) Small,80
+CAHIF,Cardamine hirsuta L. ssp. flexuosa (With.) Forbes & Hemsl.,210
+AMCH7,Amaranthus chlorostachys Willd.,295
+CALAP,Cakile lanceolata (Willd.) O.E. Schulz ssp. pseudoconstricta Rodman,125,coastal searocket
+XACA5,Xanthium calvum Millsp. & Sherff,170
+VERNO,Vernonia Schreb.,95,ironweed
+BROR4,Brassica orientalis L.,280
+SALO12,Sagittaria lorata (Chapm.) Small,75
+GAPUP2,Gaillardia pulchella Foug. var. pulchella,230,Indian blanket
+BIGNO,Bignonia L.,235,bignonia
+XAOC,Xanthium occidentale Bertol.,105
+MAVIT3,Manfreda virginica (L.) Salisb. ex Rose var. tigrina (Engelm.) Rose,180
+CAKO3,Cardamine konaensis H. St. John,270
+AMCR,Amaranthus crassipes Schltdl.,115,spreading amaranth
+GOCHN,Gochnatia Kunth,80,gochnatia
+ACSAG,Acer saccharum Marshall var. glaucum (F. Schmidt) Sarg.,265
+GOSE2,Gomphrena sessilis L.,105
+SITE5,Sisymbrium tenuifolium L.,270
+POLA14,Polianthes lata (Shinners) Shinners,235
+DEDI7,Dentaria dissecta Leavenworth,70
+AMCRC,Amaranthus crassipes Schltdl. var. crassipes,285,spreading amaranth
+MAHON,Mahonia Nutt.,60,barberry
+VEVIV,Verbesina virginica L. var. virginica,110,white crownbeard
+CAPSE,Capsella Medik.,295,capsella
+ACPE3,Achyranthes peploides (Humb. & Bonpl. ex Schult.) Britton & P. Wilson,90
+SALAO,Sagittaria latifolia Willd. var. obtusa (Muhl. ex Willd.) Wiegand,200
+BATIS,Batis P. Br.,155,turtleweed
+DIVI8,Dicliptera viridiflora (Nees) R.W. Long,265
+CAPEB,Cardamine pensylvanica Muhl. ex Willd. var. brittoniana Farw.,125
+AMCR4,Amaranthus cruentus L.,140,red amaranth
+ILCA2,Ilex caroliniana Trel. ex Small,255
+XASP2,Xanthium spinosum L.,205,spiny cocklebur
+XIENC,Ximenesia encelioides Cav. var. cana DC. p.p.,290
+IMFU,Impatiens fulva Nutt.,215
+HYGRO,Hygrophila R. Br.,70,swampweed
+SAEA3,Sagittaria eatonii J.G. Sm.,60
+GLSE5,Glebionis segetum (L.) Fourr.,65,corndaisy
+XAAC,Xanthium acerosum Greene,235
+SAVI12,Sagittaria viscosa C. Mohr,250
+SAENL2,Sagittaria engelmanniana J.G. Sm. ssp. longirostra auct. non Micheli,295
+GRTEL,Grindelia texana Scheele var. lanceolata (Nutt.) Shinners,245
+DEFU,Dentaria furcata Small,100
+YUCCA,Yucca L.,190,yucca
+VEGI,Vernonia gigantea (Walter) Trel.,75,giant ironweed
+DICLI,Dicliptera Juss.,85,foldwing
+VEALL,Vernonia altissima Nutt. var. lilacina Clute,295
+RUHUF,Ruellia humilis Nutt. var. frondosa Fernald,125
+COAM3,Corylus americana Walter,255,American hazelnut
+YUSM,Yucca smalliana Fernald,100
+ACBAL,Acer barbatum Michx. var. longii (Fernald) Fernald,60
+ALTER2,Alternanthera Forssk.,210,joyweed
+DRBR,Draba brachycarpa Nutt. ex Torr. & A. Gray,75,shortpod draba
+XAST,Xanthium strumarium L.,170,rough cocklebur
+LICA31,Lilaeopsis carolinensis J.M. Coult. & Rose,195,Carolina grasswort, western grasswort, grasswort
+AZOLL,Azolla Lam.,100,mosquitofern
+ILAM2,Ilex amelanchier M.A. Curtis ex Chapm.,295,sarvis holly
+GYMNO7,Gymnostyles Juss.,265,burrweed
+ACNEN,Acer negundo L. var. negundo,170,boxelder
+HETE14,Helenium tenuifolium Nutt.,215
+YUFI,Yucca filamentosa L.,190,Adam's needle
+JEFFE,Jeffersonia W. Bartram,300,jeffersonia
+XAMA,Xanthium macounii Britton,115
+DIPLO,Diplotaxis DC.,170,wallrocket
+ACHYR2,Achyranthes L.,165,chaff flower
+RUCIL,Ruellia ciliosa Pursh var. longiflora A. Gray,295
+SOST6,Soliva stolonifera (Brot.) Sweet,145
+SAFL8,Saccharodendron floridanum (Chapm.) Nieuwl.,115
+CADI10,Cardamine diphylla (Michx.) Alph. Wood,285,crinkleroot
+BAMA5,Batis maritima L.,125,turtleweed
+ROPA2,Rorippa palustris (L.) Besser,200,bog yellowcress
+ACTAP,Acnida tamariscina (Nutt.) Alph. Wood var. prostrata Uline & Bray,245
+DIMI4,Dipteracanthus micranthus Engelm. & A. Gray,225
+XAWO,Xanthium wootonii Cockerell,185
+COCOC2,Corylus cornuta Marshall var. cornuta,90,beaked hazelnut
+CHCOC,Chrysanthemum coronarium L. var. coronarium,280
+CAHI3,Cardamine hirsuta L.,285,hairy bittercress
+COPR3,Coronopus procumbens Gilib.,290
+DIST4,Dipteracanthus strepens (L.) Nees,60
+XAOR,Xanthium orientale L.,55
+RUHUC,Ruellia humilis Nutt. var. calvescens Fernald,65
+CEAS3,Centrostachys aspera (L.) Standl.,70
+AMLI,Amaranthus lividus auct. non L.,160
+IMNOB,Impatiens noli-tangere L. ssp. biflora (Walter) Hulten,280
+XACE2,Xanthium cenchroides Millsp. & Sherff,85
+COCO6,Corylus cornuta Marshall,80,beaked hazelnut
+ROISF2,Rorippa islandica (Oeder) Borbas var. fernaldiana Butters & Abbe,120
+CAPA12,Cardamine parviflora L.,215,sand bittercress
+CACA18,Carpinus caroliniana Walter,85,American hornbeam
+SAST4,Sagittaria stagnorum Small,295
+CAPAA2,Cardamine parviflora L. var. arenicola (Britton) O.E. Schulz,225,sand bittercress
+SAFA4,Sagittaria falcata Pursh,190
+GASI5,Gamochaeta simplicicaulis (Willd. ex Spreng.) Cabrera,260,simple-stem everlasting
+AZCR,Azolla cristata Kaulf.,185
+YOPS,Youngia pseudosenecio (Vaniot) Shih,290
+ALCA5,Alternanthera caracasana Kunth,65,washerwoman
+SAGRG,Sagittaria graminea Michx. var. graminea,245,grassy arrowhead
+ACSAR,Acer saccharum Marshall var. rugellii (Pax) Rehder,120
+CACA48,Cakile cakile (L.) Karst,190,nom. inval.
+SAGIT,Sagittaria L.,215,arrowhead
+CALA2,Cakile lanceolata (Willd.) O.E. Schulz,170,coastal searocket
+CACAV2,Carpinus caroliniana Walter var. virginiana (Marshall) Fernald,180
+CHSE,Chrysanthemum segetum L.,240
+XASTO,Xanthium strumarium L. var. oviforme (Wallr.) M. Peck,255
+ACCO8,Acnida concatenata (Moq.) Small,160
+CORYL,Corylus L.,60,hazelnut
+CATH2,Caulophyllum thalictroides (L.) Michx.,80,blue cohosh
+SASUS,Sagittaria subulata (L.) Buchenau var. subulata,220
+ACSAN2,Acer saccharum Marshall var. nigrum (Michx. f.) Britton,145
+WECA,Wedelia calycina Rich.,265
+CARPI,Carpinus L.,210,hornbeam
+HEAM,Helenium amarum (Raf.) H. Rock,180,sneezeweed
+CHCOS,Chrysanthemum coronarium L. var. spatiosum L.H. Bailey,255
+SASA18,Saccharodendron saccharum (Marshall) Moldenke,90
+CAKIL,Cakile Mill.,90,searocket
+IMNO2,Impatiens nortonii Rydb.,235
+SAGRP2,Sagittaria graminea Michx. var. platyphylla Engelm.,110
+XASTI,Xanthium strumarium L. ssp. italicum (Moretti) D. Lo.ve,170
+ROPAG,Rorippa palustris (L.) Besser ssp. glabra (O.E. Schulz) R. Stuckey,200
+XAVA,Xanthium varians Greene,100
+GRLAL,Grindelia lanceolata Nutt. var. lanceolata,180,narrowleaf gumweed
+ROHIG,Rorippa hispida (Desv.) Britton var. glabrata Lunell,195
+SASE9,Sagittaria secundifolia Kral,160,Little River arrowhead
+ACTU,Acnida tuberculata Moq.,265
+SAMO,Sagittaria montevidensis Cham. & Schltdl.,85,giant arrowhead
+STCA14,Stemmodontia calycina (Rich.) O.E. Schulz,270
+ROPAG4,Rorippa palustris (L.) Besser var. glabrata (Lunell) R. Stuckey,165
+ALPH,Alternanthera philoxeroides (Mart.) Griseb.,215,alligatorweed
+NEAC,Negundo aceroides (L.) Moench,210
+ACLE5,Achyranthes leiantha (Seub.) Standl.,130
+ALPA17,Alternanthera paronychioides A. St.-Hil.,220,smooth joyweed
+IMPAT,Impatiens L.,140,touch-me-not
+ILBU,Ilex buswellii Small,85
+RUCI4,Ruellia ciliosa Pursh,170
+SAMOC2,Sagittaria montevidensis Cham. & Schltdl. ssp. calycina (Engelm.) Bogin,150
+XASTG,Xanthium strumarium L. var. glabratum (DC.) Cronquist,300,rough cocklebur
+RUHUD,Ruellia humilis Nutt. var. depauperata Tharp & F.A. Barkley,280
+ALPU3,Alternanthera pungens Kunth,80,khakiweed
+XAOL,Xanthium oligacanthum Piper,75
+JUBR8,Justicia brachiata Pursh,160
+SALAP,Sagittaria latifolia Willd. var. pubescens (Muhl. ex Nutt.) J.G. Sm.,60
+ALSE2,Alnus serrulata (Aiton) Willd.,290,hazel alder
+DIBRA,Dicliptera brachiata (Pursh) Spreng. var. attenuata A. Gray,235
+ROPAG3,Rorippa palustris (L.) Besser var. glabra (O.E. Schulz) R. Stuckey,290
+ILCA,Ilex cassine L.,155,dahoon
+SAES2,Sagittaria esculenta Howell,260
+XASP3,Xanthium speciosum Kearney,290
+ILMOM,Ilex montana Torr. & A. Gray ex A. Gray var. mollis (A. Gray) Britton,70
+SALE8,Saccharodendron leucoderme (Small) Nieuwl.,175
+SAVAO2,Sagittaria variabilis Engelm. var. obtusa (Muhl. ex Willd.) Engelm.,230
+ACSAF,Acer saccharum Marshall ssp. floridanum (Chapm.) Desmarais,100
+CADI28,Cardamine dissecta (Leavenworth) Al-Shehbaz,255,forkleaf toothwort
+CAEDH,Cakile edentula (Bigelow) Hook. ssp. harperi (Small) Rodman,75,Harper's searocket
+DEDI6,Dentaria diphylla Michx.,240
+CADO,Cardamine douglassii Britton,180,limestone bittercress
+SAEN,Sagittaria engelmanniana J.G. Sm.,90,Engelmann's arrowhead
+XAIT,Xanthium italicum Moretti,265
+TORA2,Toxicodendron radicans (L.) Kuntze,95,eastern poison ivy, ivy, poison ivy
+GACA10,Galinsoga caracasana (DC.) Sch. Bip.,190
+HEAN2,Helianthus angustifolius L.,135,swamp sunflower
+GAQU,Galinsoga quadriradiata Cav.,245,shaggy soldier
+ACNEL,Acer negundo L. ssp. latifolium (Pax) Schwerin,175
+DIMU2,Diplotaxis muralis (L.) DC.,75,annual wallrocket
+SAPL5,Sagittaria planipes Fernald,95
+DIHA3,Dicliptera halei Riddell,185
+YUCO3,Yucca concava Haw.,245
+CAHA29,Cakile harperi Small,245
+VEHE,Verbesina helianthoides Michx.,90,gravelweed
+AMALP3,Amaranthus albus L. var. pubescens (Uline & Bray) Fernald,205
+ACFL,Acer floridanum (Chapm.) Pax,165,southern sugar maple
+YEATE,Yeatesia Small,65,bractspike
+YUAL,Yucca aloifolia L.,150,aloe yucca
+ACSP5,Acanthoxanthium spinosum (L.) Fourr.,90
+POPE,Podophyllum peltatum L.,255,mayapple
+ACSAS2,Acer saccharum Marshall var. schneckii Rehder,115,sugar maple
+XAMAG,Xanthium macrocarpum DC. var. glabratum DC.,215
+DECOC,Dentaria concatenata Michx. var. coalescens Fernald,105
+ALSES,Alnus serrulata (Aiton) Willd. var. subelliptica Fernald,290
+DRCU,Draba cuneifolia Nutt. ex Torr. & A. Gray,100,wedgeleaf draba
+OSVIV,Ostrya virginiana (Mill.) K. Koch var. virginiana,55
+YUGL2,Yucca gloriosa L.,250,moundlily yucca
+CHCO7,Chrysanthemum coronarium L.,270
