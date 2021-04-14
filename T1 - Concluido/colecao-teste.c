@@ -379,11 +379,6 @@ int main()
     }
 
     error = verifica_colecao_importa(&c1, ficheiro);
-    planta *pr;
-    int i;
-    for(i=0;i<c1->plantas[337]->n_alcunhas;i++){
-        printf("%s\n",c1->plantas[337]->alcunhas[i]);
-    }
 
     if (error)
     {

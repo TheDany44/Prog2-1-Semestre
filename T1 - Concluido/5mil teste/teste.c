@@ -449,7 +449,7 @@ int main(){
     float v;
     char file[50];
     for(i=0;i<5000;i++){
-        sprintf(file,"teste/%d.txt",i);
+        sprintf(file,"%d.txt",i);
         v+=teste(file);
     }
     printf("TEMPO MÉDIO: %.5f\n",v/5000);

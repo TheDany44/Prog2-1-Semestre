@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "plantas.h"
+#include <time.h>
 
 /* VERIFICACOES IMPLEMENTADAS */
 int verifica_planta_nova(planta **p, const char *ID, const char *nome_cientifico, char **alcunhas, int n_alcunhas, int n_sementes)
@@ -318,6 +319,8 @@ int verifica_colecao_reordena(colecao **c)
 }
 int main()
 {
+    clock_t start_t, end_t;
+    start_t=clock();
     int errorCount = 0, error;
 
     char nome[] = "Sagittaria lancifolia L. ssp. media (Micheli) Bogin";
@@ -437,6 +440,7 @@ int main()
         printf("FIM DOS TESTES: Todos os testes passaram\n");
     else
         printf("FIM DOS TESTES: Foram encontrados %d ERROS no total\n", errorCount);
-
+    end_t=clock();
+    printf("TEMPO: %.5f\n",(double)(end_t-start_t)/(CLOCKS_PER_SEC));
     return 0;
 }
