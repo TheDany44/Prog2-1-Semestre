@@ -66,18 +66,15 @@ int armazenar_contentor(armazem* armz, contentor* contr)
 	if(armazem_cheio(armz)==1){return 0;}
 
 	if(armazem_vazio(armz)==1){
-		fila *nova_fila;
-		nova_fila=fila_nova();
-		if(nova_fila==NULL){return 0;}
 
 		pilha *nova_pilha;
 		nova_pilha=pilha_nova();
-		if(nova_pilha==NULL){fila_apaga(nova_fila);return 0;}
+		if(nova_pilha==NULL){return 0;}
 
 		pilha_push(nova_pilha,contr);
 
-		fila_push(nova_fila,nova_pilha);
-		armz->contentores=nova_fila;
+		fila_push(armz->contentores,nova_pilha);
+		
 		return 1;
 
 	}

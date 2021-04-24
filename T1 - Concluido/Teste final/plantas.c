@@ -25,7 +25,7 @@ planta *planta_nova(const char *ID, const char *nome_cientifico, char **alcunhas
 		if(plant->alcunhas==NULL){free(plant);return NULL;}
 		for(i=0;i<n_alcunhas;i++){
 			plant->alcunhas[i]=malloc((strlen(alcunhas[i])+1)*sizeof(char));
-			if(plant->alcunhas[i]==NULL){free(plant);int k;for(k=0;k<i;k++){free(plant->alcunhas[k]);} free(plant->alcunhas);return NULL;}
+			if(plant->alcunhas[i]==NULL){free(plant);free(plant->alcunhas);return NULL;}
 			strcpy(plant->alcunhas[i],alcunhas[i]);
 		}
 	}else{plant->alcunhas=NULL;}
@@ -55,7 +55,7 @@ colecao *colecao_nova(const char *tipo_ordem)
 planta *procurar_planta(colecao *c,planta *p){
 	if(c==NULL || p==NULL){return NULL;}
 
-	int left=0, right=c->tamanho-1,mid;
+	int left=0, right=c->tamanho-1,mid,i;
 	if (strcmp(c->tipo_ordem,"id")==0){ 
 		while(left<=right){
 			mid=(left+right)/2;
@@ -72,16 +72,9 @@ planta *procurar_planta(colecao *c,planta *p){
 		return NULL;
 	}
 	else if (strcmp(c->tipo_ordem,"nome")==0){
-		while(left<=right){
-			mid=(left+right)/2;
-			if(strcmp(c->plantas[mid]->nome_cientifico,p->nome_cientifico)==0){
-				return c->plantas[mid];
-			}
-			else if(strcmp(p->nome_cientifico,c->plantas[mid]->nome_cientifico)<0){
-				right=mid-1;
-			}
-			else{
-				left=mid+1;
+		for(i=0;i<c->tamanho;i++){
+			if(strcmp(c->plantas[i]->ID,p->ID)==0){
+				return c->plantas[i];
 			}
 		}
 		return NULL;
@@ -95,7 +88,7 @@ int pesquisa_alcunha(planta *p,char *alcunha){
 	int i;
 	for(i=0;i<p->n_alcunhas;i++){
 		if(strcmp(p->alcunhas[i],alcunha)==0){
-			return i;
+			return 0;
 		}
 	}
 	return -1;
@@ -104,7 +97,7 @@ int pesquisa_alcunha(planta *p,char *alcunha){
 int planta_insere(colecao *c, planta *p)
 {
 	if(c==NULL || p==NULL){return -1;}
-	int tamanhoc=c->tamanho,i,control=-1;
+	int tamanhoc=c->tamanho,i;
 	planta* planta_encontrada;
 	planta_encontrada=NULL;
 	
@@ -123,9 +116,8 @@ int planta_insere(colecao *c, planta *p)
 		planta_encontrada->n_sementes+=p->n_sementes; //add seed count
 
 		for(i=0;i<p->n_alcunhas;i++){
-			control=pesquisa_alcunha(planta_encontrada,p->alcunhas[i]);
 
-			if(control==-1){
+			if(pesquisa_alcunha(planta_encontrada,p->alcunhas[i])==-1){
 				if(planta_encontrada->n_alcunhas==0){
 					planta_encontrada->alcunhas=malloc(sizeof(char*));
 					if(planta_encontrada->alcunhas==NULL){return -1;}
@@ -195,7 +187,7 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 	colecao *c;
 	FILE *f;
 	planta *p;
-	char linha[700],*token,ID[10], nome[MAX_NAME],*token_anterior;
+	char linha[700],*token,ID[10], nome[MAX_NAME];
 	int n_seeds,n_alcunhas,i,check;
 	f=fopen(nome_ficheiro,"r");
 	if(f==NULL){return NULL;}
@@ -227,12 +219,15 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 		token=strtok(NULL,","); 
 		if(token!=NULL){	//it means alcunhas exists
 			alcunhas=malloc(sizeof(char*));
+			if(alcunhas==NULL){return NULL;}
 			alcunhas[0]=malloc((strlen(token)+1)*sizeof(char));
+			if(alcunhas[0]==NULL){return NULL;}
 			strcpy(alcunhas[0],token);
 			n_alcunhas++;
 			token=strtok(NULL,",");
 			while(token!=NULL){
 				alcunhas=realloc(alcunhas,(n_alcunhas+1)*sizeof(char*));
+				if(alcunhas==NULL){return NULL;}
 				alcunhas[n_alcunhas]=malloc((strlen(token)+1)*sizeof(char));
 				if(alcunhas[n_alcunhas]==NULL){return NULL;}
 				strcpy(alcunhas[n_alcunhas],token);
@@ -241,6 +236,7 @@ colecao *colecao_importa(const char *nome_ficheiro, const char *tipo_ordem)
 			}
 		}
 		p=planta_nova(ID,nome,alcunhas,n_alcunhas,n_seeds);
+		if(p==NULL){return NULL;}
 		check=planta_insere(c,p);
 		if(check==-1){return NULL;}
 		else if(check==1){planta_apaga(p);}
@@ -287,7 +283,7 @@ int procurar_planta_nome(colecao *c,const char* nome){
 
 planta *planta_remove(colecao *c, const char *nomep)
 {
-	int tamanhoc=c->tamanho,i,exists=0,pos;
+	int tamanhoc=c->tamanho,i,pos;
 	planta *pr;
 	if(c==NULL){return NULL;}
 
@@ -301,6 +297,7 @@ planta *planta_remove(colecao *c, const char *nomep)
 	c->tamanho--;
 	
 	c->plantas=realloc(c->plantas,c->tamanho*sizeof(planta*));
+	if(c->plantas==NULL){return NULL;}
 
 	return pr;
 }
@@ -332,6 +329,7 @@ int colecao_apaga(colecao *c)
 	}
 	free(c->plantas);
 	free(c);
+	c=NULL;
 
 	return 0;
 }
@@ -345,10 +343,12 @@ int *colecao_pesquisa_nome(colecao *c, const char *nomep, int *tam)
 			if(pos==NULL){ 
 				exists=1;
 				pos=malloc(sizeof(int*));
+				if(pos==NULL){return NULL;}
 				pos[0]=i;
 			}
 			else{
 				pos=realloc(pos,(tamanhov+1)*sizeof(int*));
+				if(pos==NULL){return NULL;}
 				pos[tamanhov]=i;
 			}
 			tamanhov++;
@@ -360,10 +360,12 @@ int *colecao_pesquisa_nome(colecao *c, const char *nomep, int *tam)
 					if(pos==NULL){ 
 						exists=1;
 						pos=malloc(sizeof(int*));
+						if(pos==NULL){return NULL;}
 						pos[0]=i;
 					}
 					else{
 						pos=realloc(pos,(tamanhov+1)*sizeof(int*));
+						if(pos==NULL){return NULL;}
 						pos[tamanhov]=i;
 					}
 					tamanhov++;
@@ -473,7 +475,6 @@ int colecao_reordena(colecao *c, const char *tipo_ordem)
 	if(strcmp(c->tipo_ordem,tipo_ordem)==0 || c->tamanho==0 || c->tamanho==1){return 0;}
 
 	strcpy(c->tipo_ordem,tipo_ordem);
-	int i;
 	Quick_Sort_colecao(c,0,c->tamanho-1);
 	return 1;
 
