@@ -223,7 +223,6 @@ int st_importa_grafo(estrutura *st, grafo *g)
 
         }
     }  
-
     return 1;
 }
 
