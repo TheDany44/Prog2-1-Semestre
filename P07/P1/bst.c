@@ -230,11 +230,33 @@ no_bst* bst_remove_impl(no_bst* no, const char *str)
 int bst_altura (no_bst* no)
 {
     /* a implementar na alinea 1.b) */
-	return -1;
+    if (no==NULL){return -1;}
+
+    int right, left;
+
+    right=bst_altura(no->direita);
+
+    left=bst_altura(no->esquerda);
+    
+    if(right>left){
+        return right+1;
+    }
+    else{
+        return left+1;
+    }
 }
 
 void bst_preordem_impl(no_bst* no)
 {
     /* a implementar na alinea 1.c) */
+    if(no==NULL){return;}
+    
+    printf("%s ",no->str);
+
+    bst_preordem_impl(no->esquerda);
+
+    bst_preordem_impl(no->direita);
+    
+    
 	return;
 }
