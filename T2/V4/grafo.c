@@ -320,7 +320,7 @@ no_grafo **pesquisa_avancada(grafo *g, char *destino, data chegada, double preco
 {
     if(g==NULL || destino==NULL || preco_max<0 || n==NULL){return NULL;}
 
-    int i,k,j;
+    int i,k;
     no_grafo** vetor;
     vetor=NULL;
     (*n)=0;
