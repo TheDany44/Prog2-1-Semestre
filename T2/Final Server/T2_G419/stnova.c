@@ -14,6 +14,8 @@
 
 int tab_dapaga(tab_destino *tab);
 
+unsigned long hash(char *str, int tamanho);
+
 estrutura *st_nova()
 {
     estrutura *tab_origem;
@@ -39,7 +41,7 @@ int sondagem_fazer_origem(estrutura *st, char* cidade){
     if(st==NULL || cidade==NULL){return -1;}
 
     int pos,i,newpos;
-    pos=hash_krm(cidade,st->capacidade);
+    pos=hash(cidade,st->capacidade);
 
     for(i=0;i<st->capacidade;i++){
         newpos=(pos+i)%st->capacidade;
@@ -78,9 +80,7 @@ tab_destino *colocar_origem(estrutura *st,no_grafo *no){
     if(tab_dest==NULL){return NULL;}
 
     st->destab[pos]=tab_dest;
-    st->estado_orig[pos]=malloc((strlen(no->cidade)+1)*sizeof(char));
-    if(st->estado_orig[pos]==NULL){tab_dapaga(tab_dest);return NULL;}
-    strcpy(st->estado_orig[pos],no->cidade);
+    st->estado_orig[pos]=no->cidade;
     st->tamanho++;
 
     return tab_dest;
@@ -90,7 +90,7 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade){
     if(tab==NULL || cidade==NULL){return -1;}
 
     int pos,i,newpos;
-    pos=hash_krm(cidade,tab->capacidade);
+    pos=hash(cidade,tab->capacidade);
 
     for(i=0;i<tab->capacidade;i++){
         newpos=(pos+i)%tab->capacidade;
@@ -121,9 +121,7 @@ elemento_preco *elemento_pnovo(int preco, char* codigo){
     elemento=malloc(sizeof(elemento_preco));
     if(elemento==NULL){return NULL;}
 
-    elemento->codigo=malloc((strlen(codigo)+1)*sizeof(char));
-    if(elemento->codigo==NULL){free(elemento);return NULL;}
-    strcpy(elemento->codigo,codigo);
+    elemento->codigo=codigo;
 
     elemento->preco=preco;
 
@@ -191,9 +189,7 @@ int colocar_voo(tab_destino *tab_dest,aresta_grafo *aresta){
 
     if(tab_dest->estado_dest[pos]==NULL){
         tab_dest->heap_p[pos]=h;
-        tab_dest->estado_dest[pos]=malloc((strlen(aresta->destino->cidade)+1)*sizeof(char));
-        if(tab_dest->estado_dest[pos]==NULL){return 0;}
-        strcpy(tab_dest->estado_dest[pos],aresta->destino->cidade);
+        tab_dest->estado_dest[pos]=aresta->destino->cidade;
         tab_dest->tamanho++;
     }
 
@@ -231,7 +227,7 @@ int sondagem_procura_origem(estrutura *st, char* cidade){
     if(st==NULL || cidade==NULL){return -1;}
 
     int pos,i,newpos;
-    pos=hash_krm(cidade,st->capacidade);
+    pos=hash(cidade,st->capacidade);
 
     for(i=0;i<st->capacidade;i++){
         newpos=(pos+i)%st->capacidade;
@@ -250,7 +246,7 @@ int sondagem_procura_destino(tab_destino *tab, char* cidade){
     if(tab==NULL || cidade==NULL){return -1;}
 
     int pos,i,newpos;
-    pos=hash_krm(cidade,tab->capacidade);
+    pos=hash(cidade,tab->capacidade);
 
     for(i=0;i<tab->capacidade;i++){
         newpos=(pos+i)%tab->capacidade;
@@ -296,16 +292,15 @@ int heap_papaga(heap_preco *h){
 
     int i;
     for(i=RAIZ;i<=h->tamanho;i++){
-        free(h->elementos[i]->codigo);
-        h->elementos[i]->codigo=NULL;
+        
         free(h->elementos[i]);
-        h->elementos[i]=NULL;
+        //h->elementos[i]=NULL;
     }
     if(h->tamanho!=0){
         free(h->elementos);
     }
     free(h);
-    h=NULL;
+    //h=NULL;
     return 1;
 
 }
@@ -317,16 +312,15 @@ int tab_dapaga(tab_destino *tab){
     for(i=0;i<tab->capacidade;i++){
         if(tab->estado_dest[i]!=NULL){
             if(!heap_papaga(tab->heap_p[i])){return 0;}
-            free(tab->estado_dest[i]);
-            tab->estado_dest[i]=NULL;
+            
         }
     }
     free(tab->estado_dest);
-    tab->estado_dest=NULL;
+    //tab->estado_dest=NULL;
     free(tab->heap_p);
-    tab->heap_p=NULL;
+    //tab->heap_p=NULL;
     free(tab);
-    tab=NULL;
+    //tab=NULL;
     return 1;
 }
 
@@ -338,15 +332,14 @@ int st_apaga(estrutura *st)
     for(i=0;i<st->capacidade;i++){
         if(st->estado_orig[i]!=NULL){
             if(!tab_dapaga(st->destab[i])){return -1;}
-            free(st->estado_orig[i]);
-            st->estado_orig[i]=NULL;
+    
         }
     }
     if(st->capacidade!=0){
         free(st->estado_orig);
-        st->estado_orig=NULL;
+        //st->estado_orig=NULL;
         free(st->destab);
-        st->destab=NULL;
+        //st->destab=NULL;
     }
     free(st);
     st=NULL;
@@ -357,12 +350,12 @@ int st_apaga(estrutura *st)
 
 //------HASH FUNC---------
 // HASH djb2 - by dan bernstein
-unsigned long hash(unsigned char *str, int tamanho)
+unsigned long hash(char *str, int tamanho)
 {
     unsigned long hash = 5381;
     int c;
 
-    while (c = *str++)
+    while ((c = *str++))
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
     return hash%tamanho;
