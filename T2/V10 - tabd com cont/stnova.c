@@ -170,25 +170,20 @@ int st_apaga(estrutura *st)
     return -1;
 }
 
-
 //------HASH FUNC---------
 // HASH djb2 - by dan bernstein
-unsigned long hash(char *str1, char *str2, int tamanho)
+unsigned long hash1(char *str1, int tamanho)
 {
-    unsigned long hash1 = 5381, hash2=5381;
+    unsigned long hash1 = 5381;
     int c;
 
     while ((c = *str1++))
         hash1 = ((hash1 << 5) + hash1) + c; /* hash * 33 + c */
-
-    while ((c = *str2++))
-        hash2 = ((hash2 << 5) + hash2) + c; /* hash * 33 + c */
-
-    return (hash1+hash2)%tamanho;
+    return hash1%tamanho;
 }
 
 
-/*unsigned long hash(const char *chave, int tamanho)
+unsigned long hash2(const char *chave, int tamanho)
 {
     int c, t = strlen(chave);
     unsigned long hash = 7;
@@ -199,4 +194,8 @@ unsigned long hash(char *str1, char *str2, int tamanho)
     }
 
     return hash % tamanho;
-}*/
+}
+
+unsigned long hash(char *str1, char *str2, int tamanho){
+    return (hash1(str1,tamanho)+hash2(str2,tamanho))%tamanho;
+}
