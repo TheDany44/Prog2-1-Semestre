@@ -12,6 +12,8 @@
 
 typedef struct
 {
+    char* destino;
+    char* origem;
     double preco;
     char* codigo;
 
@@ -21,17 +23,8 @@ typedef struct
 {
     int capacidade;
     int tamanho;
-    elemento_preco **elem;
-    char **estado_dest;
-
-} tab_destino;
-
-typedef struct
-{
-    int capacidade;
-    int tamanho;
-    tab_destino **destab;
-    char **estado_orig;
+    elemento_preco **voos;
+    int *estado_celulas;
 
 } estrutura;
 
