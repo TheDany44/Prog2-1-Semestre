@@ -8,15 +8,7 @@
 #include "tabdispersao.h"
 #include "grafo.h"
 
-int primo(int num){
-    int i;
-    for(i=2;i<=num/2;i++){
-        if(num%i==0){
-            return primo(num+1);
-        }
-    }
-    return num;
-}
+
 
 tabela_dispersao *tabela_nova(int capacidade, hash_func *hfunc, sond_func *sfunc)
 {
@@ -30,7 +22,7 @@ tabela_dispersao *tabela_nova(int capacidade, hash_func *hfunc, sond_func *sfunc
 
     tab->hfunc=hfunc;
     tab->sfunc=sfunc;
-    tab->capacidade=primo(capacidade);
+    tab->capacidade=capacidade;
     tab->tamanho=0;
 
 

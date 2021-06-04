@@ -7,7 +7,17 @@
 #include <string.h>
 #include "stnova.h"
 
-unsigned long hash(char *str, char* str2, int tamanho);
+unsigned long hash(char *str, char* str2);
+
+int primo(int num){
+    int i;
+    for(i=2;i<=num/2;i++){
+        if(num%i==0){
+            return primo(num+1);
+        }
+    }
+    return num;
+}
 
 estrutura *st_nova()
 {
@@ -20,7 +30,7 @@ estrutura *st_nova()
 
 int recriar_estrutura(estrutura *st,int capacidade){
     if(st==NULL || capacidade<=0){return 0;}
-
+    capacidade=primo(capacidade+1);
     st->capacidade=capacidade;
     st->estado_celulas=calloc(capacidade,sizeof(int));
     if(st->estado_celulas==NULL){return 0;}
@@ -34,8 +44,9 @@ int recriar_estrutura(estrutura *st,int capacidade){
 int sondagem_voo(estrutura *st, char* origem,char*destino, int*flag){
     if(st==NULL || origem==NULL || destino==NULL){return -1;}
 
-    int pos,i,newpos;
-    pos=hash(origem,destino,st->capacidade);
+    int i,newpos;
+    unsigned long pos;
+    pos=hash(origem,destino);
 
     for(i=0;i<st->capacidade+1;i++){
         newpos=(pos+i)%st->capacidade;
@@ -96,7 +107,7 @@ int st_importa_grafo(estrutura *st, grafo *g)
         tamanho+=g->nos[i]->tamanho;
     }
     
-    if(!recriar_estrutura(st,tamanho*2)){return -1;}
+    if(!recriar_estrutura(st,tamanho)){return -1;}
 
     int k;
     no_grafo *no;
@@ -116,8 +127,9 @@ int st_importa_grafo(estrutura *st, grafo *g)
 int sondagem_procura_voo(estrutura *st, char* origem,char*destino){
     if(st==NULL || origem==NULL || destino==NULL){return -1;}
 
-    int pos,i,newpos;
-    pos=hash(origem,destino,st->capacidade);
+    int i,newpos;
+    unsigned long pos;
+    pos=hash(origem,destino);
 
     for(i=0;i<st->capacidade+1;i++){
         newpos=(pos+i)%st->capacidade;
@@ -178,7 +190,7 @@ unsigned long hash1(char *str1)
     int c;
 
     while ((c = *str1++))
-        hash1 = ((hash1 << 5) + hash1) + c; /* hash * 33 + c */
+        hash1 = ((hash1 << 5) ^ hash1) ^ c; /* hash * 33 + c */
     return hash1;
 }
 
@@ -189,10 +201,10 @@ unsigned long hash2(const char *str)
     int c;
 
     while ((c = *str++))
-        hash1 = ((hash1 << 5) + hash1) + c; /* hash * 33 + c */
+        hash1 = ((hash1 << 5) ^ hash1) ^ c; /* hash * 33 + c */
     return hash1;
 }
 
-unsigned long hash(char *str1, char *str2, int tamanho){
-    return (hash1(str1)+hash2(str2))%tamanho;
+unsigned long hash(char *str1, char *str2){
+    return (hash1(str1)+hash2(str2));
 }
