@@ -95,8 +95,8 @@ int st_importa_grafo(estrutura *st, grafo *g)
     for(i=0;i<g->tamanho;i++){
         tamanho+=g->nos[i]->tamanho;
     }
-
-    if(!recriar_estrutura(st,tamanho)){return -1;}
+    
+    if(!recriar_estrutura(st,tamanho*2)){return -1;}
 
     int k;
     no_grafo *no;
@@ -172,7 +172,7 @@ int st_apaga(estrutura *st)
 
 //------HASH FUNC---------
 // HASH djb2 - by dan bernstein
-unsigned long hash1(char *str1, int tamanho)
+unsigned long hash1(char *str1)
 {
     unsigned long hash1 = 5381;
     int c;
@@ -183,7 +183,7 @@ unsigned long hash1(char *str1, int tamanho)
 }
 
 
-unsigned long hash2(const char *chave, int tamanho)
+unsigned long hash2(const char *chave)
 {
     int c, t = strlen(chave);
     unsigned long hash = 7;
@@ -197,5 +197,5 @@ unsigned long hash2(const char *chave, int tamanho)
 }
 
 unsigned long hash(char *str1, char *str2, int tamanho){
-    return (hash1(str1,tamanho)+hash2(str2,tamanho))%tamanho;
+    return (hash1(str1)+hash2(str2))%tamanho;
 }
