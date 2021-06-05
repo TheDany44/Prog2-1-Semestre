@@ -257,7 +257,9 @@ int aresta_apaga(aresta_grafo *aresta)
     if(aresta==NULL){return -1;}
 
     free(aresta->codigo);
+    aresta->codigo=NULL;
     free(aresta->companhia);
+    aresta->companhia=NULL;
     free(aresta);
     aresta=NULL;
 
@@ -463,9 +465,7 @@ no_grafo **trajeto_mais_rapido(grafo *g, char *origem, char *destino, data parti
                     
                     origem_no->arestas[i]->destino->p_acumulado=origem_no->p_acumulado+diferenca+duracao_voo;
                     origem_no->arestas[i]->destino->anterior=origem_no;
-                    memcpy(origem_no->arestas[i]->destino->dataatualizada,origem_no->dataatualizada,sizeof(data));
-                    origem_no->arestas[i]->destino->dataatualizada->tm_sec+=diferenca+duracao_voo;
-                    mktime(origem_no->arestas[i]->destino->dataatualizada);
+                    memcpy(origem_no->arestas[i]->destino->dataatualizada,&origem_no->arestas[i]->chegada,sizeof(data));
                     
                     if(!atualiza_heap(h,origem_no->arestas[i]->destino)){return NULL;}
                 }
@@ -529,29 +529,15 @@ no_grafo **menos_transbordos(grafo *g, char *origem, char *destino, data partida
 
 
         for(i=0;i<origem_no->tamanho;i++){
-            diferenca=difftime(mktime(&origem_no->arestas[i]->partida),mktime(origem_no->dataatualizada));
-            
-            pos_v=nao_removido(vetor,tamanho,origem_no->arestas[i]->destino);
-            if(pos_v!=-1){
-                vetor[v]->dataatualizada=NULL;
-                vetor[v]->p_acumulado=__DBL_MAX__;
-                vetor[v]->anterior=NULL;
-                heap_insere(h,origem_no->arestas[i]->destino,__DBL_MAX__);
-                for(v=pos_v;v<tamanho-1;v++){
-                    vetor[v]=vetor[v+1];
-                }
-                tamanho--;
-                vetor=realloc(vetor,tamanho*sizeof(no_grafo*));
+            diferenca=1;
+            if(origem_no->p_acumulado==0){
+                diferenca=difftime(mktime(&origem_no->arestas[i]->partida),mktime(origem_no->dataatualizada));
             }
             
             if(diferenca>=0){
                 if(origem_no->arestas[i]->destino->p_acumulado>origem_no->p_acumulado+1){
-                    duracao_voo=difftime(mktime(&origem_no->arestas[i]->chegada),mktime(&origem_no->arestas[i]->partida));
                     origem_no->arestas[i]->destino->p_acumulado=origem_no->p_acumulado+1;
                     origem_no->arestas[i]->destino->anterior=origem_no;
-                    memcpy(origem_no->arestas[i]->destino->dataatualizada,origem_no->dataatualizada,sizeof(data));
-                    origem_no->arestas[i]->destino->dataatualizada->tm_sec+=diferenca+duracao_voo;
-                    mktime(origem_no->arestas[i]->destino->dataatualizada);
                     
                     if(!atualiza_heap(h,origem_no->arestas[i]->destino)){return NULL;}
                 }
