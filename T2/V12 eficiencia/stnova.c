@@ -7,9 +7,6 @@
 #include <string.h>
 #include "stnova.h"
 
-unsigned long primeconstorig=19;
-
-unsigned int hash2or( const char *key);
 
 unsigned long hash(char *str);
 
@@ -52,7 +49,6 @@ int recriar_estrutura(estrutura *st,int capacidade){
     if(st->estado_celulas==NULL){return 0;}
     st->destab=calloc(capacidade,sizeof(tab_destino*));
     if(st->destab==NULL){free(st->estado_celulas);return 0;}
-    primeconstorig=primo2(capacidade-1);
 
     return 1;
 }
@@ -69,7 +65,7 @@ int sondagem_fazer_origem(estrutura *st, char* cidade){
     }
 
     for(i=1;i<st->capacidade*st->capacidade;i++){
-        newpos=(pos+i*hash2or(cidade))%st->capacidade;
+        newpos=(pos+i)%st->capacidade;
 
         if(st->estado_celulas[newpos]==0){
             return newpos;
@@ -229,7 +225,7 @@ int sondagem_procura_origem(estrutura *st, char* cidade){
     }
 
     for(i=1;i<st->capacidade*st->capacidade;i++){
-        newpos=(pos+i*hash2or(cidade))%st->capacidade;
+        newpos=(pos+i)%st->capacidade;
         if(st->estado_celulas[newpos]==0){
             return -1;
         }
@@ -349,21 +345,6 @@ unsigned long hash(char *str)
     return hash;
 }
 
-unsigned int hash2or( const char *key)
-{
-    //store the sum of ascii numerical values
-    int hashVal = 0;
-
-    //add the values of all chars while multiplying each one with a prime number
-    for ( int i = 0; i < strlen(key); i++ )
-        hashVal = 29 * hashVal + key[ i ];
-
-    //mod the hashed value with a prime smaller than the table size, subtract that number
-    //with the prime just used and return that value
-    unsigned int index = primeconstorig - ( hashVal % primeconstorig );
-
-    return index;
-}
 
 /*unsigned long hash(const char *chave, int tamanho)
 {
