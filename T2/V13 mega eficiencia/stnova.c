@@ -46,14 +46,20 @@ int sondagem_fazer_origem(estrutura *st, char* cidade){
     if(st==NULL || cidade==NULL){return -1;}
 
     int i,newpos;
+    unsigned int state[st->capacidade];
+    memset(state,0,sizeof(state));
     unsigned long pos;
     pos=hash(cidade);
 
-    for(i=0;i<st->capacidade;i++){
-        newpos=(pos+i)%st->capacidade;
+    for(i=0;i<st->capacidade*st->capacidade;i++){
+        newpos=(pos+i*i)%st->capacidade;
+        while(state[newpos]==1){
+            newpos=(newpos+1)%st->capacidade;
+        }
         if(st->estado_orig[newpos]==NULL){
             return newpos;
         }
+        state[newpos]=1;
     }
     return -1;
 }
@@ -97,11 +103,16 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade,int *flag){
     if(tab==NULL || cidade==NULL){return -1;}
 
     int i,newpos;
+    unsigned int state[tab->capacidade];
+    memset(state,0,sizeof(state));
     unsigned long pos;
     pos=hash(cidade);
 
-    for(i=0;i<tab->capacidade;i++){
-        newpos=(pos+i)%tab->capacidade;
+    for(i=0;i<tab->capacidade*tab->capacidade;i++){
+        newpos=(pos+i*i)%tab->capacidade;
+        while(state[newpos]==1){
+            newpos=(newpos+1)%tab->capacidade;
+        }
         if(tab->estado_dest[newpos]==NULL){
             *flag=1;
             return newpos;
@@ -109,6 +120,7 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade,int *flag){
         if(strcmp(tab->estado_dest[newpos],cidade)==0){
             return newpos;
         }
+        state[newpos]=1;
         
     }
     return -1;
@@ -186,18 +198,24 @@ int sondagem_procura_origem(estrutura *st, char* cidade){
     if(st==NULL || cidade==NULL){return -1;}
 
     int i,newpos;
+    unsigned int state[st->capacidade];
+    memset(state,0,sizeof(state));
     unsigned long pos;
     pos=hash(cidade);
 
-    for(i=0;i<st->capacidade;i++){
-        newpos=(pos+i)%st->capacidade;
+    for(i=0;i<st->capacidade*st->capacidade;i++){
+        newpos=(pos+i*i)%st->capacidade;
+        while(state[newpos]==1){
+            newpos=(newpos+1)%st->capacidade;
+        }
+
         if(st->estado_orig[newpos]==NULL){
             return -1;
         }
         if(strcmp(st->estado_orig[newpos],cidade)==0){
             return newpos;
         }
-        
+        state[newpos]=1;
     }
     return -1;
 }
@@ -205,19 +223,23 @@ int sondagem_procura_origem(estrutura *st, char* cidade){
 int sondagem_procura_destino(tab_destino *tab, char* cidade){
     if(tab==NULL || cidade==NULL){return -1;}
 
-    int i,newpos;
+    int i,newpos,state[tab->capacidade];
+    memset(state,0,sizeof(state));
     unsigned long pos;
     pos=hash(cidade);
 
-    for(i=0;i<tab->capacidade;i++){
-        newpos=(pos+i)%tab->capacidade;
+    for(i=0;i<tab->capacidade*tab->capacidade;i++){
+        newpos=(pos+i*i)%tab->capacidade;
+        while(state[newpos]==1){
+            newpos=(newpos+1)%tab->capacidade;
+        }
         if(tab->estado_dest[newpos]==NULL){
             return -1;
         }
         if(strcmp(tab->estado_dest[newpos],cidade)==0){
             return newpos;
         }
-        
+        state[newpos]=1;
     }
     return -1;
 }
