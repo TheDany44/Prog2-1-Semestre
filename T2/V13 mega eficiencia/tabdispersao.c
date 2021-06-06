@@ -98,13 +98,17 @@ void tabela_apaga(tabela_dispersao *td)
     for(i=0;i<td->capacidade;i++){
         if(td->estado_celulas[i]==1){
             td->nos[i]=NULL;
+            td->tamanho--;
         }
-        td->estado_celulas[i]=0;
+        td->estado_celulas[i]=-1;
     }
     
     free(td->estado_celulas);
+    td->estado_celulas=NULL;
     free(td->nos);
+    td->nos=NULL;
     free(td);
+    td=NULL;
     return;
 
 }

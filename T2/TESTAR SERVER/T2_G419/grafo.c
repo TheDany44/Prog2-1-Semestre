@@ -11,9 +11,7 @@
 
 grafo *grafo_novo()
 {
-    grafo *g = (grafo *)malloc(sizeof(grafo));
-    g->tamanho = 0;
-    g->nos = NULL;
+    grafo *g = (grafo *)calloc(1,sizeof(grafo));
 
     return g;
 }
@@ -176,7 +174,7 @@ int retira_vetor_nos(grafo* g,int pos){
     for(i=pos;i<g->tamanho;i++){
         g->nos[i]=g->nos[i+1];
     }
-    g->nos=realloc(g->nos,g->tamanho*sizeof(no_grafo*));
+    g->nos=(no_grafo**)realloc(g->nos,g->tamanho*sizeof(no_grafo*));
     if(g->nos==NULL && g->tamanho!=0){return 0;}
     return 1;
 }
@@ -190,7 +188,7 @@ int retira_vetor_aresta(no_grafo* no,int pos){
     for(i=pos;i<no->tamanho;i++){
         no->arestas[i]=no->arestas[i+1];
     }
-    no->arestas=realloc(no->arestas,no->tamanho*sizeof(aresta_grafo*));
+    no->arestas=(aresta_grafo**)realloc(no->arestas,no->tamanho*sizeof(aresta_grafo*));
     if(no->arestas==NULL && no->tamanho!=0){return 0;}
     return 1;
 }
@@ -204,9 +202,9 @@ int apaga_vetor_arestas(no_grafo* no){
     }
     if(no->tamanho!=0){
         free(no->arestas);
+        no->arestas=NULL;
     }
     
-    no->arestas=NULL;
     no->tamanho=0;
 
     return 1;
@@ -257,7 +255,9 @@ int aresta_apaga(aresta_grafo *aresta)
     if(aresta==NULL){return -1;}
 
     free(aresta->codigo);
+    aresta->codigo=NULL;
     free(aresta->companhia);
+    aresta->companhia=NULL;
     free(aresta);
     aresta=NULL;
 
@@ -269,6 +269,7 @@ int no_apaga(no_grafo *no)
     if(no==NULL){return -1;}
 
     free(no->cidade);
+    no->cidade=NULL;
     if(!apaga_vetor_arestas(no)){return -1;};
     free(no);
     no=NULL;
@@ -280,9 +281,11 @@ void grafo_apaga(grafo *g)
 {
     if(g==NULL){return;}
 
-    int i;
-    for(i=0;i<g->tamanho;i++){
-        if(no_apaga(g->nos[i])!=0){return;}
+    no_grafo* no;
+    while(g->tamanho!=0){
+        no=no_remove(g,g->nos[0]->cidade);
+        if(no==NULL){return;}
+        if(no_apaga(no)!=0){return;}
     }
     free(g->nos);
     free(g);
@@ -398,7 +401,6 @@ int atualiza_heap(heap *h, no_grafo *no){
         temp=heap_remove(aux);
         heap_insere(h,temp,temp->p_acumulado);
     }
-    //printf("\n\n%f\n\n",h->elementos[1]->prioridade);
     heap_apaga(aux);
     return 1;
 }
@@ -463,11 +465,9 @@ no_grafo **trajeto_mais_rapido(grafo *g, char *origem, char *destino, data parti
                     
                     origem_no->arestas[i]->destino->p_acumulado=origem_no->p_acumulado+diferenca+duracao_voo;
                     origem_no->arestas[i]->destino->anterior=origem_no;
-                    memcpy(origem_no->arestas[i]->destino->dataatualizada,origem_no->dataatualizada,sizeof(data));
-                    origem_no->arestas[i]->destino->dataatualizada->tm_sec+=diferenca+duracao_voo;
-                    mktime(origem_no->arestas[i]->destino->dataatualizada);
+                    memcpy(origem_no->arestas[i]->destino->dataatualizada,&origem_no->arestas[i]->chegada,sizeof(data));
                     
-                    if(!atualiza_heap(h,origem_no->arestas[i]->destino)){return NULL;}
+                    if(!atualiza_heap(h,origem_no->arestas[i]->destino)){dijstra_acaba(h,g);return NULL;}
                 }
             }
         }
@@ -529,29 +529,15 @@ no_grafo **menos_transbordos(grafo *g, char *origem, char *destino, data partida
 
 
         for(i=0;i<origem_no->tamanho;i++){
-            diferenca=difftime(mktime(&origem_no->arestas[i]->partida),mktime(origem_no->dataatualizada));
-            
-            pos_v=nao_removido(vetor,tamanho,origem_no->arestas[i]->destino);
-            if(pos_v!=-1){
-                vetor[v]->dataatualizada=NULL;
-                vetor[v]->p_acumulado=__DBL_MAX__;
-                vetor[v]->anterior=NULL;
-                heap_insere(h,origem_no->arestas[i]->destino,__DBL_MAX__);
-                for(v=pos_v;v<tamanho-1;v++){
-                    vetor[v]=vetor[v+1];
-                }
-                tamanho--;
-                vetor=realloc(vetor,tamanho*sizeof(no_grafo*));
+            diferenca=1;
+            if(origem_no->p_acumulado==0){
+                diferenca=difftime(mktime(&origem_no->arestas[i]->partida),mktime(origem_no->dataatualizada));
             }
             
-            if(diferenca>=0){
+            if(diferenca>=0 && nao_removido(vetor,tamanho,origem_no->arestas[i]->destino)==-1){
                 if(origem_no->arestas[i]->destino->p_acumulado>origem_no->p_acumulado+1){
-                    duracao_voo=difftime(mktime(&origem_no->arestas[i]->chegada),mktime(&origem_no->arestas[i]->partida));
                     origem_no->arestas[i]->destino->p_acumulado=origem_no->p_acumulado+1;
                     origem_no->arestas[i]->destino->anterior=origem_no;
-                    memcpy(origem_no->arestas[i]->destino->dataatualizada,origem_no->dataatualizada,sizeof(data));
-                    origem_no->arestas[i]->destino->dataatualizada->tm_sec+=diferenca+duracao_voo;
-                    mktime(origem_no->arestas[i]->destino->dataatualizada);
                     
                     if(!atualiza_heap(h,origem_no->arestas[i]->destino)){return NULL;}
                 }

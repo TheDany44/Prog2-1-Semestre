@@ -7,9 +7,9 @@
 #include <string.h>
 #include "stnova.h"
 
-unsigned long hash(char *str);
-
 int tab_dapaga(tab_destino *tab);
+
+unsigned long hash(char *str);
 
 int primo(int num){
     int i;
@@ -24,7 +24,7 @@ int primo(int num){
 estrutura *st_nova()
 {
     estrutura *tab_origem;
-    tab_origem=calloc(1,sizeof(estrutura));
+    tab_origem=(estrutura*)calloc(1,sizeof(estrutura));
     if(tab_origem==NULL){return NULL;}
 
     return tab_origem;
@@ -34,9 +34,9 @@ int recriar_estrutura(estrutura *st,int capacidade){
     if(st==NULL || capacidade<=0){return 0;}
     capacidade=primo(capacidade+1);
     st->capacidade=capacidade;
-    st->estado_orig=calloc(capacidade,sizeof(char*));
+    st->estado_orig=(char**)calloc(capacidade,sizeof(char*));
     if(st->estado_orig==NULL){return 0;}
-    st->destab=calloc(capacidade,sizeof(tab_destino*));
+    st->destab=(tab_destino**)calloc(capacidade,sizeof(tab_destino*));
     if(st->destab==NULL){free(st->estado_orig);return 0;}
 
     return 1;
@@ -62,13 +62,14 @@ tab_destino *newtab_d(int capacidade){
     if(capacidade<0){return NULL;}
 
     tab_destino *tab;
-    tab=calloc(1,sizeof(tab_destino));
+    tab=(tab_destino*)calloc(1,sizeof(tab_destino));
     if(tab==NULL){return NULL;}
+
     capacidade=primo(capacidade+1);
     tab->capacidade=capacidade;
-    tab->elem=calloc(capacidade,sizeof(elemento_preco*));
+    tab->elem=(elemento_preco**)calloc(capacidade,sizeof(elemento_preco*));
     if(tab->elem==NULL){free(tab);return NULL;}
-    tab->estado_dest=calloc(capacidade,sizeof(char*));
+    tab->estado_dest=(char**)calloc(capacidade,sizeof(char*));
     if(tab->estado_dest==NULL){free(tab->elem),free(tab);return NULL;}
     return tab;
 }
@@ -82,7 +83,7 @@ tab_destino *colocar_origem(estrutura *st,no_grafo *no){
     if(pos<0){return NULL;}
 
     tab_destino *tab_dest;
-    tab_dest=newtab_d(no->tamanho);
+    tab_dest=newtab_d(no->tamanho*2);
     if(tab_dest==NULL){return NULL;}
 
     st->destab[pos]=tab_dest;
@@ -92,7 +93,7 @@ tab_destino *colocar_origem(estrutura *st,no_grafo *no){
     return tab_dest;
 }
 
-int sondagem_fazer_destino(tab_destino *tab, char* cidade){
+int sondagem_fazer_destino(tab_destino *tab, char* cidade,int *flag){
     if(tab==NULL || cidade==NULL){return -1;}
 
     int i,newpos;
@@ -102,6 +103,7 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade){
     for(i=0;i<tab->capacidade;i++){
         newpos=(pos+i)%tab->capacidade;
         if(tab->estado_dest[newpos]==NULL){
+            *flag=1;
             return newpos;
         }
         if(strcmp(tab->estado_dest[newpos],cidade)==0){
@@ -115,10 +117,8 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade){
 elemento_preco *elemento_pnovo(){
 
     elemento_preco *elemento;
-    elemento=malloc(sizeof(elemento_preco));
+    elemento=(elemento_preco*)malloc(sizeof(elemento_preco));
     if(elemento==NULL){return NULL;}
-
-    elemento->preco=__DBL_MAX__;
 
     return elemento;
 }
@@ -132,20 +132,21 @@ int colocar_voo(tab_destino *tab_dest,aresta_grafo *aresta){
         return 0;
     }
 
-    int pos;
-    pos=sondagem_fazer_destino(tab_dest,aresta->destino->cidade);
+    int pos,flag=0;
+    pos=sondagem_fazer_destino(tab_dest,aresta->destino->cidade,&flag);
     if(pos<0){return 0;}
 
     elemento_preco *epreco;
-    if(tab_dest->estado_dest[pos]==NULL){
+    if(flag){
         epreco=elemento_pnovo();
         if(epreco==NULL){return 0;}
         tab_dest->elem[pos]=epreco;
         tab_dest->estado_dest[pos]=aresta->destino->cidade;
         tab_dest->tamanho++;
+        epreco->codigo=aresta->codigo;
+        epreco->preco=aresta->preco;
     }
-
-    if(tab_dest->elem[pos]->preco>aresta->preco){
+    else if(tab_dest->elem[pos]->preco>aresta->preco){
         tab_dest->elem[pos]->preco = aresta->preco;
         tab_dest->elem[pos]->codigo = aresta->codigo;
     }
@@ -158,7 +159,7 @@ int st_importa_grafo(estrutura *st, grafo *g)
 {
     if(st==NULL || g==NULL){return -1;}
 
-    if(!recriar_estrutura(st,g->tamanho)){return -1;}
+    if(!recriar_estrutura(st,g->tamanho*2)){return -1;}
 
     int i, k;
     no_grafo *no;
@@ -239,11 +240,6 @@ char *st_pesquisa(estrutura *st, char *origem, char *destino)
     pos=sondagem_procura_destino(tab_dest,destino);
     if(pos<0){return NULL;}
 
-    /*char* encontrado,*copiar;
-    copiar=tab_dest->heap_p[pos]->elementos[RAIZ]->codigo;
-    encontrado=malloc((strlen(copiar)+1)*sizeof(char));
-    strcpy(encontrado,copiar);
-    return encontrado;*/
     return tab_dest->elem[pos]->codigo;
 }
 
@@ -254,15 +250,16 @@ int tab_dapaga(tab_destino *tab){
     for(i=0;i<tab->capacidade;i++){
         if(tab->estado_dest[i]!=NULL){
             free(tab->elem[i]);
+            tab->elem[i]=NULL;
             
         }
     }
     free(tab->estado_dest);
-    //tab->estado_dest=NULL;
+    tab->estado_dest=NULL;
     free(tab->elem);
-    //tab->heap_p=NULL;
+    tab->elem=NULL;
     free(tab);
-    //tab=NULL;
+    tab=NULL;
     return 1;
 }
 
@@ -279,9 +276,9 @@ int st_apaga(estrutura *st)
     }
     if(st->capacidade!=0){
         free(st->estado_orig);
-        //st->estado_orig=NULL;
+        st->estado_orig=NULL;
         free(st->destab);
-        //st->destab=NULL;
+        st->destab=NULL;
     }
     free(st);
     st=NULL;
@@ -298,10 +295,11 @@ unsigned long hash(char *str)
     int c;
 
     while ((c = *str++))
-        hash = ((hash << 5) ^ hash) ^ c; /* hash * 33 + c */
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
     return hash;
 }
+
 
 
 /*unsigned long hash(const char *chave, int tamanho)
