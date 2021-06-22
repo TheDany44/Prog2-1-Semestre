@@ -24,7 +24,7 @@ int primo(int num){
 estrutura *st_nova()
 {
     estrutura *tab_origem;
-    tab_origem=calloc(1,sizeof(estrutura));
+    tab_origem=(estrutura*)calloc(1,sizeof(estrutura));
     if(tab_origem==NULL){return NULL;}
 
     return tab_origem;
@@ -34,9 +34,9 @@ int recriar_estrutura(estrutura *st,int capacidade){
     if(st==NULL || capacidade<=0){return 0;}
     capacidade=primo(capacidade+1);
     st->capacidade=capacidade;
-    st->estado_orig=calloc(capacidade,sizeof(char*));
+    st->estado_orig=(char**)calloc(capacidade,sizeof(char*));
     if(st->estado_orig==NULL){return 0;}
-    st->destab=calloc(capacidade,sizeof(tab_destino*));
+    st->destab=(tab_destino**)calloc(capacidade,sizeof(tab_destino*));
     if(st->destab==NULL){free(st->estado_orig);return 0;}
 
     return 1;
@@ -62,14 +62,14 @@ tab_destino *newtab_d(int capacidade){
     if(capacidade<0){return NULL;}
 
     tab_destino *tab;
-    tab=calloc(1,sizeof(tab_destino));
+    tab=(tab_destino*)calloc(1,sizeof(tab_destino));
     if(tab==NULL){return NULL;}
 
     capacidade=primo(capacidade+1);
     tab->capacidade=capacidade;
-    tab->elem=calloc(capacidade,sizeof(elemento_preco*));
+    tab->elem=(elemento_preco**)calloc(capacidade,sizeof(elemento_preco*));
     if(tab->elem==NULL){free(tab);return NULL;}
-    tab->estado_dest=calloc(capacidade,sizeof(char*));
+    tab->estado_dest=(char**)calloc(capacidade,sizeof(char*));
     if(tab->estado_dest==NULL){free(tab->elem),free(tab);return NULL;}
     return tab;
 }
@@ -117,7 +117,7 @@ int sondagem_fazer_destino(tab_destino *tab, char* cidade,int *flag){
 elemento_preco *elemento_pnovo(){
 
     elemento_preco *elemento;
-    elemento=malloc(sizeof(elemento_preco));
+    elemento=(elemento_preco*)malloc(sizeof(elemento_preco));
     if(elemento==NULL){return NULL;}
 
     return elemento;

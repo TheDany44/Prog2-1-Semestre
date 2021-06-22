@@ -104,8 +104,11 @@ void tabela_apaga(tabela_dispersao *td)
     }
     
     free(td->estado_celulas);
+    td->estado_celulas=NULL;
     free(td->nos);
+    td->nos=NULL;
     free(td);
+    td=NULL;
     return;
 
 }
